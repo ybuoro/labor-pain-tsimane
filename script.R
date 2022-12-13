@@ -2227,7 +2227,7 @@ fig.S6<-add_y_break(fig.S6, 0)
 
 fig.S6
 
-dev.print(tiff, "/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/FIGURES/figureS6", width=2000, height=900, units="px")
+dev.print(tiff, "/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/FIGURES/figureS6.tiff", width=2000, height=900, units="px")
 dev.off()
 
 ######### --------------------------------------------------------------------------------------------------- ######### 
