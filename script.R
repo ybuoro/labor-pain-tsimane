@@ -1218,34 +1218,34 @@ tdata.female=ttdata.female[!is.na(ttdata.female$pid),]
 tdlab.male=tibble(tdlab.male, pcpain="NA") # will be used to store male percentages of pain for each age category
 
 # computing percentage of individuals having pain: all the PIDs that have pain for the same age category and sex, divided by all the PIDs of the individuals of the same age category and sex
-tdlab.male[tdlab.male$agecat=="10-19",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="10-19", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="10-19", 10])))
+tdlab.male[tdlab.male$agecat=="10-19",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="10-19", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="10-19", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="20-29",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="20-29", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="20-29", 10])))
+tdlab.male[tdlab.male$agecat=="20-29",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="20-29", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="20-29", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="30-39",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="30-39", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="30-39", 10])))
+tdlab.male[tdlab.male$agecat=="30-39",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="30-39", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="30-39", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="40-49",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="40-49", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="40-49", 10])))
+tdlab.male[tdlab.male$agecat=="40-49",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="40-49", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="40-49", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="50-59",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="50-59", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="50-59", 10])))
+tdlab.male[tdlab.male$agecat=="50-59",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="50-59", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="50-59", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="60+",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="60+", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="60+", 10])))
+tdlab.male[tdlab.male$agecat=="60+",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="60+", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="60+", 10])))
                                                        ,0), "%") 
 
 
 # female percentages of pain for each age category
 tdlab.female=tibble(tdlab.female, pcpain="NA")
 
-tdlab.female[tdlab.female$agecat=="10-19",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="10-19", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="10-19", 10])))
+tdlab.female[tdlab.female$agecat=="10-19",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="10-19", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="10-19", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="20-29",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="20-29", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="20-29", 10])))
+tdlab.female[tdlab.female$agecat=="20-29",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="20-29", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="20-29", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="30-39",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="30-39", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="30-39", 10])))
+tdlab.female[tdlab.female$agecat=="30-39",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="30-39", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="30-39", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="40-49",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="40-49", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="40-49", 10])))
+tdlab.female[tdlab.female$agecat=="40-49",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="40-49", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="40-49", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="50-59",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="50-59", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="50-59", 10])))
+tdlab.female[tdlab.female$agecat=="50-59",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="50-59", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="50-59", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="60+",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="60+", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="60+", 10])))
+tdlab.female[tdlab.female$agecat=="60+",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="60+", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="60+", 10])))
                                                            ,0), "%") 
 ## --------------------- ##
 
@@ -1327,34 +1327,34 @@ tdlab.female=dataacute[dataacute$male=='0',]
 tdlab.male=tibble(tdlab.male,pcpain="NA")# will be used to store male percentages of pain for each age category
 
 # computing percentage of individuals having pain: all the PIDs that have acute pain for the same age category and sex, divided by all the PIDs of the individuals of the same age category and sex
-tdlab.male[tdlab.male$agecat=="10-19",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="10-19", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="10-19", 10])))
+tdlab.male[tdlab.male$agecat=="10-19",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="10-19", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="10-19", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="20-29",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="20-29", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="20-29", 10])))
+tdlab.male[tdlab.male$agecat=="20-29",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="20-29", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="20-29", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="30-39",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="30-39", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="30-39", 10])))
+tdlab.male[tdlab.male$agecat=="30-39",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="30-39", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="30-39", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="40-49",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="40-49", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="40-49", 10])))
+tdlab.male[tdlab.male$agecat=="40-49",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="40-49", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="40-49", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="50-59",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="50-59", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="50-59", 10])))
+tdlab.male[tdlab.male$agecat=="50-59",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="50-59", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="50-59", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="60+",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="60+", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="60+", 10])))
+tdlab.male[tdlab.male$agecat=="60+",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="60+", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="60+", 10])))
                                                        ,0), "%") 
 
 
 # female
 tdlab.female=tibble(tdlab.female,pcpain="NA")
 
-tdlab.female[tdlab.female$agecat=="10-19",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="10-19", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="10-19", 10])))
+tdlab.female[tdlab.female$agecat=="10-19",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="10-19", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="10-19", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="20-29",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="20-29", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="20-29", 10])))
+tdlab.female[tdlab.female$agecat=="20-29",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="20-29", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="20-29", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="30-39",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="30-39", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="30-39", 10])))
+tdlab.female[tdlab.female$agecat=="30-39",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="30-39", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="30-39", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="40-49",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="40-49", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="40-49", 10])))
+tdlab.female[tdlab.female$agecat=="40-49",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="40-49", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="40-49", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="50-59",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="50-59", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="50-59", 10])))
+tdlab.female[tdlab.female$agecat=="50-59",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="50-59", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="50-59", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="60+",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="60+", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="60+", 10])))
+tdlab.female[tdlab.female$agecat=="60+",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="60+", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="60+", 10])))
                                                            ,0), "%") 
 ## --------------------- ##
 
@@ -1400,33 +1400,33 @@ tdlab.female=data90[data90$male=='0',]
 
 tdlab.male=tibble(tdlab.male,pcpain="NA")
 # computing percentage of individuals having pain: all the PIDs that have chronic pain (>=90 days) for the same age category and sex, divided by all the PIDs of the individuals of the same age category and sex 
-tdlab.male[tdlab.male$agecat=="10-19",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="10-19", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="10-19", 10])))
+tdlab.male[tdlab.male$agecat=="10-19",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="10-19", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="10-19", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="20-29",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="20-29", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="20-29", 10])))
+tdlab.male[tdlab.male$agecat=="20-29",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="20-29", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="20-29", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="30-39",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="30-39", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="30-39", 10])))
+tdlab.male[tdlab.male$agecat=="30-39",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="30-39", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="30-39", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="40-49",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="40-49", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="40-49", 10])))
+tdlab.male[tdlab.male$agecat=="40-49",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="40-49", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="40-49", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="50-59",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="50-59", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="50-59", 10])))
+tdlab.male[tdlab.male$agecat=="50-59",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="50-59", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="50-59", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="60+",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="60+", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="60+", 10])))
+tdlab.male[tdlab.male$agecat=="60+",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="60+", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="60+", 10])))
                                                        ,0), "%") 
 
 # female
 tdlab.female=tibble(tdlab.female,pcpain="NA")
 # computing percentage of individuals having pain: all the PIDs that have chronic pain (>=90 days) for the same age category and sex, divided by all the PIDs of the individuals of the same age category and sex 
-tdlab.female[tdlab.female$agecat=="10-19",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="10-19", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="10-19", 10])))
+tdlab.female[tdlab.female$agecat=="10-19",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="10-19", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="10-19", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="20-29",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="20-29", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="20-29", 10])))
+tdlab.female[tdlab.female$agecat=="20-29",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="20-29", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="20-29", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="30-39",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="30-39", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="30-39", 10])))
+tdlab.female[tdlab.female$agecat=="30-39",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="30-39", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="30-39", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="40-49",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="40-49", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="40-49", 10])))
+tdlab.female[tdlab.female$agecat=="40-49",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="40-49", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="40-49", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="50-59",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="50-59", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="50-59", 10])))
+tdlab.female[tdlab.female$agecat=="50-59",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="50-59", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="50-59", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="60+",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="60+", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="60+", 10])))
+tdlab.female[tdlab.female$agecat=="60+",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="60+", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="60+", 10])))
                                                            ,0), "%") 
 ## --------------------- ##
 
@@ -1474,33 +1474,33 @@ tdlab.female=data180[data180$male=='0',]
 # male
 tdlab.male=tibble(tdlab.male,pcpain="NA")
 # computing percentage of individuals having pain: all the PIDs that have chronic pain (>=180 days) for the same age category and sex, divided by all the PIDs of the individuals of the same age category and sex 
-tdlab.male[tdlab.male$agecat=="10-19",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="10-19", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="10-19", 10])))
+tdlab.male[tdlab.male$agecat=="10-19",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="10-19", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="10-19", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="20-29",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="20-29", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="20-29", 10])))
+tdlab.male[tdlab.male$agecat=="20-29",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="20-29", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="20-29", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="30-39",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="30-39", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="30-39", 10])))
+tdlab.male[tdlab.male$agecat=="30-39",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="30-39", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="30-39", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="40-49",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="40-49", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="40-49", 10])))
+tdlab.male[tdlab.male$agecat=="40-49",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="40-49", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="40-49", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="50-59",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="50-59", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="50-59", 10])))
+tdlab.male[tdlab.male$agecat=="50-59",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="50-59", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="50-59", 10])))
                                                          ,0), "%") 
-tdlab.male[tdlab.male$agecat=="60+",72]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="60+", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="60+", 10])))
+tdlab.male[tdlab.male$agecat=="60+",75]<- paste0(round(length(unique(unlist(tdata.male[tdata.male$agecat=="60+", 10])))*100/length(unique(unlist(data.male[data.male$agecat=="60+", 10])))
                                                        ,0), "%") 
 
 # female
 tdlab.female=tibble(tdlab.female,pcpain="NA")
 
-tdlab.female[tdlab.female$agecat=="10-19",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="10-19", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="10-19", 10])))
+tdlab.female[tdlab.female$agecat=="10-19",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="10-19", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="10-19", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="20-29",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="20-29", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="20-29", 10])))
+tdlab.female[tdlab.female$agecat=="20-29",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="20-29", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="20-29", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="30-39",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="30-39", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="30-39", 10])))
+tdlab.female[tdlab.female$agecat=="30-39",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="30-39", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="30-39", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="40-49",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="40-49", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="40-49", 10])))
+tdlab.female[tdlab.female$agecat=="40-49",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="40-49", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="40-49", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="50-59",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="50-59", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="50-59", 10])))
+tdlab.female[tdlab.female$agecat=="50-59",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="50-59", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="50-59", 10])))
                                                              ,0), "%") 
-tdlab.female[tdlab.female$agecat=="60+",72]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="60+", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="60+", 10])))
+tdlab.female[tdlab.female$agecat=="60+",75]<- paste0(round(length(unique(unlist(tdata.female[tdata.female$agecat=="60+", 10])))*100/length(unique(unlist(data.female[data.female$agecat=="60+", 10])))
                                                            ,0), "%") 
 ## --------------------- ##
 
@@ -1741,19 +1741,24 @@ write.csv(table.s3, "/home/yoann/Bureau//PAIN TSIMANE REVIEWER VERSION/TABLES/ta
 
 
 ######### TABLE S4 ######### 
-# translate beta coefficients in log odds and odds ratio
+
 library(glmmTMB)
 model4 <- glmmTMB(Pain ~ z_age + male + Anatomical.location + (1|pid) + (1|comID), data=data, family=binomial)
-summary(model4)
 
-# beta coefficients
-bc.4=round(summary(model4)$coefficients$cond[,1],2)
+## Beta coefficients ##
+bc.4=round(summary(model4)$coefficients$cond[,1],2))
+## ----------- ##
+
+## SD ##
 sd.4=round(summary(model4)$coefficients$cond[,2],2)
+## ----------- ##
+
+## P-values ##
 pv.4=round(summary(model4)$coefficients$cond[,4],2)
 tpvalue=pv.4
 pvalue=pv.4
 
-#loop to display correctly p-value (not raw values)
+# loop to display correctly p-value (not raw values)
 for (i in 1:length(tpvalue))
 {
   if (tpvalue[i]<=0.001)
@@ -1779,18 +1784,27 @@ for (i in 1:length(tpvalue))
 }
 pvalue
 pv.4=pvalue
+## ----------- ##
 
+## Logit ## 
 log.4=summary(model4)$family
+## ----------- ##
+
+## Number of person-observations and number of individuals (pid) ##
 nobs.4=summary(model4)$nobs
 nobs.npid.ncomID=c(nobs.4,summary(model4)$ngrps$cond)
 names(nobs.npid.ncomID)<-c("Number of person-observations", "pid", "comID")
+## ----------- ##
+
+## Random effects variances ##
 randvar.4=c(round(summary(model4)$varcor$cond$pid[1],2), round(summary(model4)$varcor$cond$comID[1],2))
 names(randvar.4)<-c("pid", "comID")
+## ----------- ##
 
 list4=list(bc.4, sd.4, pv.4, log.4, nobs.npid.ncomID, randvar.4)
 names(list4)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
 
-capture.output(list4, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS4.csv")
+capture.output(list4, file="/home/yoann/Bureau//PAIN TSIMANE REVIEWER VERSION/TABLES/tableS4.csv")
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 
@@ -1833,6 +1847,69 @@ dev.print(tiff, "/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/FIGURES/Figure
 dev.off()
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
+######### TABLE S5 ######### 
+duration=data[!is.na(data$Pain.Days),]
+
+model5 <- glmmTMB(Pain.Days ~ z_age + male + Anatomical.location + (1|pid) + (1|comID), data=duration, family=genpois)
+
+## Beta coefficients ##
+bc.5=round(exp(summary(model5)$coefficients$cond[,1]),2)
+## ----------- ##
+
+## SD ##
+sd.5=round(summary(model5)$coefficients$cond[,2],2)
+## ----------- ##
+
+## P-values ##
+pv.5=round(summary(model5)$coefficients$cond[,4],2)
+tpvalue=pv.5
+pvalue=pv.5
+for (i in 1:length(tpvalue))
+{
+  if (tpvalue[i]<=0.001)
+  {
+    pvalue[i]<-"p≤0.001"
+  }
+  if (tpvalue[i]<=0.01 & tpvalue[i]>0.001)
+  {
+    pvalue[i]<-"p≤0.01"
+  }
+  if (tpvalue[i]<=0.05 & tpvalue[i]>0.01)
+  {
+    pvalue[i]<-"p≤0.05"
+  }
+  if (tpvalue[i]<=0.1 & tpvalue[i]>0.05)
+  {
+    pvalue[i]<-"p≤0.1"
+  }
+  if (tpvalue[i]>0.1)
+  {
+    pvalue[i]<-round(tpvalue[i], 3)
+  }
+}
+pvalue
+pv.5=pvalue
+## ----------- ##
+
+## Number of person-observations and number of individuals (pid) ##
+log.5=summary(model5)$family
+nobs.5=summary(model5)$nobs
+nobs.npid.ncomID=c(nobs.5,summary(model5)$ngrps$cond)
+names(nobs.npid.ncomID)<-c("Number of person-observations", "pid", "comID")
+## ----------- ##
+
+## Random effects variances ##
+randvar.5=c(round(summary(model5)$varcor$cond$pid[1],2), round(summary(model5)$varcor$cond$comID[1],2))
+names(randvar.5)<-c("pid", "comID")
+## ----------- ##
+
+list5=list(bc.5, sd.5, pv.5, log.5, nobs.npid.ncomID, randvar.5)
+names(list5)<-c("Beta coefficients", "Standard deviations", "P-values", "Log count", " ", "Variance explained by random effects")
+
+capture.output(list5, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS5.csv")
+######### --------------------------------------------------------------------------------------------------- ######### 
+
+
 ######### FIGURE S4 ######### 
 
 ## 1) generate predicted values for all possible levels and values from model ##
@@ -1870,6 +1947,133 @@ fig.S4
 
 dev.print(tiff, "/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/FIGURES/figureS4.tiff", width=2000, height=1000, units="px")
 dev.off()  
+######### --------------------------------------------------------------------------------------------------- ######### 
+
+######### TABLE S6 ######### 
+ddata=data
+ddata$Chronic.Pain90<-as.numeric(ddata$Chronic.Pain90)
+model6 <- glmmTMB(Chronic.Pain90 ~ z_age + male + Anatomical.location + (1|pid) + (1|comID), data=ddata, family=binomial)
+
+## Beta coefficients ##
+bc.6=round(summary(model6)$coefficients$cond[,1],2)
+## ----------- ##
+
+## SD ##
+sd.6=round(summary(model6)$coefficients$cond[,2],2)
+## ----------- ##
+
+## P-values ##
+pv.6=round(summary(model6)$coefficients$cond[,4],2)
+tpvalue=pv.6
+pvalue=pv.6
+for (i in 1:length(tpvalue))
+{
+  if (tpvalue[i]<=0.001)
+  {
+    pvalue[i]<-"p≤0.001"
+  }
+  if (tpvalue[i]<=0.01 & tpvalue[i]>0.001)
+  {
+    pvalue[i]<-"p≤0.01"
+  }
+  if (tpvalue[i]<=0.05 & tpvalue[i]>0.01)
+  {
+    pvalue[i]<-"p≤0.05"
+  }
+  if (tpvalue[i]<=0.1 & tpvalue[i]>0.05)
+  {
+    pvalue[i]<-"p≤0.1"
+  }
+  if (tpvalue[i]>0.1)
+  {
+    pvalue[i]<-round(tpvalue[i], 3)
+  }
+}
+pvalue
+pv.6=pvalue
+## ----------- ##
+
+## Link function ##
+log.6=summary(model6)$family
+## ----------- ##
+
+## Number of person-observations and number of individuals (pid) ##
+nobs.6=summary(model6)$nobs
+nobs.npid.ncomID=c(nobs.6,summary(model6)$ngrps$cond)
+names(nobs.npid.ncomID)<-c("Number of person-observations", "pid", "comID")
+## ----------- ##
+
+## Random effects variances ##
+randvar.6=c(round(summary(model6)$varcor$cond$pid[1],2), round(summary(model6)$varcor$cond$comID[1],2))
+names(randvar.6)<-c("pid", "comID")
+## ----------- ##
+
+list6=list(bc.6, sd.6, pv.6, log.6, nobs.npid.ncomID, randvar.6)
+names(list6)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
+capture.output(list6, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS6.csv")
+######### --------------------------------------------------------------------------------------------------- ######### 
+
+######### TABLE S7 ######### 
+ddata$Chronic.Pain180<-as.numeric(ddata$Chronic.Pain180)
+model7 <- glmmTMB(Chronic.Pain180 ~ z_age + male + Anatomical.location + (1|pid) + (1|comID), data=ddata, family=binomial)
+
+## Beta coefficients ##
+bc.7=round(summary(model7)$coefficients$cond[,1],2)
+## ----------- ##
+
+## SD ##
+sd.7=round(summary(model7)$coefficients$cond[,2],2)
+## ----------- ##
+
+## P-values ##
+pv.7=round(summary(model7)$coefficients$cond[,4],2)
+tpvalue=pv.7
+pvalue=pv.7
+for (i in 1:length(tpvalue))
+{
+  if (tpvalue[i]<=0.001)
+  {
+    pvalue[i]<-"p≤0.001"
+  }
+  if (tpvalue[i]<=0.01 & tpvalue[i]>0.001)
+  {
+    pvalue[i]<-"p≤0.01"
+  }
+  if (tpvalue[i]<=0.05 & tpvalue[i]>0.01)
+  {
+    pvalue[i]<-"p≤0.05"
+  }
+  if (tpvalue[i]<=0.1 & tpvalue[i]>0.05)
+  {
+    pvalue[i]<-"p≤0.1"
+  }
+  if (tpvalue[i]>0.1)
+  {
+    pvalue[i]<-round(tpvalue[i], 3)
+  }
+}
+pvalue
+pv.7=pvalue
+## ----------- ##
+
+## Link function ##
+log.7=summary(model7)$family
+## ----------- ##
+
+## Number of person-observations and number of individuals (pid) ##
+nobs.7=summary(model7)$nobs
+nobs.npid.ncomID=c(nobs.7,summary(model7)$ngrps$cond)
+names(nobs.npid.ncomID)<-c("Number of person-observations", "pid", "comID")
+## ----------- ##
+
+## Random effects variances ##
+randvar.7=c(round(summary(model7)$varcor$cond$pid[1],2), round(summary(model7)$varcor$cond$comID[1],2))
+names(randvar.7)<-c("pid", "comID")
+## ----------- ##
+
+list7=list(bc.7, sd.7, pv.7, log.7, nobs.npid.ncomID, randvar.7)
+names(list7)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
+capture.output(list7, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS7.csv")
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 ######### FIGURE S5 ######### 
@@ -1911,6 +2115,258 @@ fig.S5
 dev.print(tiff, "/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/FIGURES/figureS5.tiff", width=2000, height=1000, units="px")
 dev.off()
 ######### --------------------------------------------------------------------------------------------------- ######### 
+
+######### TABLE S8 ######### 
+model8 <- glmmTMB(Pain ~ z_age + male + Anatomical.location + z_sumdiags + (1|pid) + (1|comID), data=data, family=binomial)
+
+## Beta coefficients ##
+bc.8=round(summary(model8)$coefficients$cond[,1],2)
+## ----------- ##
+
+## SD ##
+sd.8=round(summary(model8)$coefficients$cond[,2],2)
+## ----------- ##
+
+## P-values ##
+pv.8=round(summary(model8)$coefficients$cond[,4],2)
+tpvalue=pv.8
+pvalue=pv.8
+for (i in 1:length(tpvalue))
+{
+  if (tpvalue[i]<=0.001)
+  {
+    pvalue[i]<-"p≤0.001"
+  }
+  if (tpvalue[i]<=0.01 & tpvalue[i]>0.001)
+  {
+    pvalue[i]<-"p≤0.01"
+  }
+  if (tpvalue[i]<=0.05 & tpvalue[i]>0.01)
+  {
+    pvalue[i]<-"p≤0.05"
+  }
+  if (tpvalue[i]<=0.1 & tpvalue[i]>0.05)
+  {
+    pvalue[i]<-"p≤0.1"
+  }
+  if (tpvalue[i]>0.1)
+  {
+    pvalue[i]<-round(tpvalue[i], 3)
+  }
+}
+pvalue
+pv.8=pvalue
+## ----------- ##
+
+## Link function ##
+log.8=summary(model8)$family
+## ----------- ##
+
+## Number of person-observations and number of individuals (pid) ##
+nobs.8=summary(model8)$nobs
+nobs.npid.ncomID=c(nobs.8,summary(model8)$ngrps$cond)
+names(nobs.npid.ncomID)<-c("Number of person-observations", "pid", "comID")
+## ----------- ##
+
+## Random effects variances ##
+randvar.8=c(round(summary(model8)$varcor$cond$pid[1],2), round(summary(model8)$varcor$cond$comID[1],2))
+names(randvar.8)<-c("pid", "comID")
+## ----------- ##
+
+list8=list(bc.8, sd.8, pv.8, log.8, nobs.npid.ncomID, randvar.8)
+names(list8)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
+capture.output(list8, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS8.csv")
+######### --------------------------------------------------------------------------------------------------- ######### 
+
+######### TABLE S9 ######### 
+model9 <- glmmTMB(Pain.Days ~ z_age + male + Anatomical.location + z_sumdiags + (1|pid) + (1|comID), data=duration, family=genpois)
+
+## Beta coefficients ##
+bc.9=round(summary(model9)$coefficients$cond[,1],2)
+## ----------- ##
+
+## SD ##
+sd.9=round(summary(model9)$coefficients$cond[,2],2)
+## ----------- ##
+
+## P-values ##
+pv.9=round(summary(model9)$coefficients$cond[,4],2)
+tpvalue=pv.9
+pvalue=pv.9
+for (i in 1:length(tpvalue))
+{
+  if (tpvalue[i]<=0.001)
+  {
+    pvalue[i]<-"p≤0.001"
+  }
+  if (tpvalue[i]<=0.01 & tpvalue[i]>0.001)
+  {
+    pvalue[i]<-"p≤0.01"
+  }
+  if (tpvalue[i]<=0.05 & tpvalue[i]>0.01)
+  {
+    pvalue[i]<-"p≤0.05"
+  }
+  if (tpvalue[i]<=0.1 & tpvalue[i]>0.05)
+  {
+    pvalue[i]<-"p≤0.1"
+  }
+  if (tpvalue[i]>0.1)
+  {
+    pvalue[i]<-round(tpvalue[i], 3)
+  }
+}
+pvalue
+pv.9=pvalue
+## ----------- ##
+
+## Link function ##
+log.9=summary(model9)$family
+## ----------- ##
+
+## Number of person-observations and number of individuals (pid) ##
+nobs.9=summary(model9)$nobs
+nobs.npid.ncomID=c(nobs.9,summary(model9)$ngrps$cond)
+names(nobs.npid.ncomID)<-c("Number of person-observations", "pid", "comID")
+## ----------- ##
+
+## Random effects variances ##
+randvar.9=c(round(summary(model9)$varcor$cond$pid[1],2), round(summary(model9)$varcor$cond$comID[1],2))
+names(randvar.9)<-c("pid", "comID")
+## ----------- ##
+
+list9=list(bc.9, sd.9, pv.9, log.9, nobs.npid.ncomID, randvar.9)
+names(list9)<-c("Beta coefficients", "Standard deviations", "P-values", "Log count", " ", "Variance explained by random effects")
+capture.output(list9, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS9.csv")
+######### --------------------------------------------------------------------------------------------------- ######### 
+
+######### TABLE S10 ######### 
+model10 <- glmmTMB(Chronic.Pain90 ~ z_age + male + Anatomical.location + z_sumdiags + (1|pid) + (1|comID), data=data, family=binomial)
+
+## Beta coefficients ##
+bc.10=round(summary(model10)$coefficients$cond[,1],2)
+## ----------- ##
+
+## SD ##
+sd.10=round(summary(model10)$coefficients$cond[,2],2)
+## ----------- ##
+
+## P-values ##
+pv.10=round(summary(model10)$coefficients$cond[,4],2)
+tpvalue=pv.10
+pvalue=pv.10
+for (i in 1:length(tpvalue))
+{
+  if (tpvalue[i]<=0.001)
+  {
+    pvalue[i]<-"p≤0.001"
+  }
+  if (tpvalue[i]<=0.01 & tpvalue[i]>0.001)
+  {
+    pvalue[i]<-"p≤0.01"
+  }
+  if (tpvalue[i]<=0.05 & tpvalue[i]>0.01)
+  {
+    pvalue[i]<-"p≤0.05"
+  }
+  if (tpvalue[i]<=0.1 & tpvalue[i]>0.05)
+  {
+    pvalue[i]<-"p≤0.1"
+  }
+  if (tpvalue[i]>0.1)
+  {
+    pvalue[i]<-round(tpvalue[i], 3)
+  }
+}
+pvalue
+pv.10=pvalue
+## ----------- ##
+
+## Link function ##
+log.10=summary(model10)$family
+## ----------- ##
+
+## Number of person-observations and number of individuals (pid) ##
+nobs.10=summary(model10)$nobs
+nobs.npid.ncomID=c(nobs.10,summary(model10)$ngrps$cond)
+names(nobs.npid.ncomID)<-c("Number of person-observations", "pid", "comID")
+## ----------- ##
+
+## Random effects variances ##
+randvar.10=c(round(summary(model10)$varcor$cond$pid[1],2), round(summary(model10)$varcor$cond$comID[1],2))
+names(randvar.10)<-c("pid", "comID")
+## ----------- ##
+
+list10=list(bc.10, sd.10, pv.10, log.10, nobs.npid.ncomID, randvar.10)
+names(list10)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
+capture.output(list10, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS10.csv")
+######### --------------------------------------------------------------------------------------------------- ######### 
+
+
+######### TABLE S11 #########
+ddata=data
+ddata$Chronic.Pain180<-as.numeric(ddata$Chronic.Pain180)
+model11 <- glmmTMB(Chronic.Pain180 ~ z_age + male + Anatomical.location + z_sumdiags + (1|pid) + (1|comID), data=ddata, family=binomial)
+
+## Beta coefficients ##
+bc.11=round(summary(model11)$coefficients$cond[,1],2)
+## ----------- ##
+
+## SD ##
+sd.11=round(summary(model11)$coefficients$cond[,2],2)
+## ----------- ##
+
+## P-values ##
+pv.11=round(summary(model11)$coefficients$cond[,4],2)
+tpvalue=pv.11
+pvalue=pv.11
+for (i in 1:length(tpvalue))
+{
+  if (tpvalue[i]<=0.001)
+  {
+    pvalue[i]<-"p≤0.001"
+  }
+  if (tpvalue[i]<=0.01 & tpvalue[i]>0.001)
+  {
+    pvalue[i]<-"p≤0.01"
+  }
+  if (tpvalue[i]<=0.05 & tpvalue[i]>0.01)
+  {
+    pvalue[i]<-"p≤0.05"
+  }
+  if (tpvalue[i]<=0.1 & tpvalue[i]>0.05)
+  {
+    pvalue[i]<-"p≤0.1"
+  }
+  if (tpvalue[i]>0.1)
+  {
+    pvalue[i]<-round(tpvalue[i], 3)
+  }
+}
+pvalue
+pv.11=pvalue
+## ----------- ##
+
+## Link function ##
+log.11=summary(model11)$family
+## ----------- ##
+
+## Number of person-observations and number of individuals (pid) ##
+nobs.11=summary(model11)$nobs
+nobs.npid.ncomID=c(nobs.11,summary(model11)$ngrps$cond)
+names(nobs.npid.ncomID)<-c("Number of person-observations", "pid", "comID")
+## ----------- ##
+
+## Random effects variances ##
+randvar.11=c(round(summary(model11)$varcor$cond$pid[1],2), round(summary(model11)$varcor$cond$comID[1],2))
+names(randvar.11)<-c("pid", "comID")
+## ----------- ##
+
+list11=list(bc.11, sd.11, pv.11, log.11, nobs.npid.ncomID, randvar.11)
+names(list11)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
+capture.output(list11, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS11.csv")
+######### --------------------------------------------------------------------------------------------------- ######### 
+
 
 ######### FIGURE S6 #########
 
@@ -2232,6 +2688,7 @@ dev.off()
 
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
+
 ######### FIGURE S7 ######### 
 #selecting females
 dataf=data[data$male=="0",]
@@ -2423,6 +2880,265 @@ dev.print(tiff, "/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/FIGURES/figure
 dev.off()
 
 ######### --------------------------------------------------------------------------------------------------- ######### 
+
+######### TABLE S14 ######### 
+model14 <- glmmTMB(Pain ~ z_age + male + Anatomical.location + z_sumdiags + z_YearsSchool + (1|pid) + (1|comID), data=data, family=binomial)
+
+## Beta coefficients ##
+bc.14=round(summary(model14)$coefficients$cond[,1],2)
+## ----------- ##
+
+## SD ##
+sd.14=round(summary(model14)$coefficients$cond[,2],2)
+## ----------- ##
+
+## P-values ##
+pv.14=round(summary(model14)$coefficients$cond[,4],2)
+tpvalue=pv.14
+pvalue=pv.14
+for (i in 1:length(tpvalue))
+{
+  if (tpvalue[i]<=0.001)
+  {
+    pvalue[i]<-"p≤0.001"
+  }
+  if (tpvalue[i]<=0.01 & tpvalue[i]>0.001)
+  {
+    pvalue[i]<-"p≤0.01"
+  }
+  if (tpvalue[i]<=0.05 & tpvalue[i]>0.01)
+  {
+    pvalue[i]<-"p≤0.05"
+  }
+  if (tpvalue[i]<=0.1 & tpvalue[i]>0.05)
+  {
+    pvalue[i]<-"p≤0.1"
+  }
+  if (tpvalue[i]>0.1)
+  {
+    pvalue[i]<-round(tpvalue[i], 3)
+  }
+}
+pvalue
+pv.14=pvalue
+## ----------- ##
+
+## Link function ##
+log.14=summary(model14)$family
+## ----------- ##
+
+## Number of person-observations and number of individuals (pid) ##
+nobs.14=summary(model14)$nobs
+nobs.npid.ncomID=c(nobs.14,summary(model14)$ngrps$cond)
+names(nobs.npid.ncomID)<-c("Number of person-observations", "pid", "comID")
+## ----------- ##
+
+## Random effects variances ##
+randvar.14=c(round(summary(model14)$varcor$cond$pid[1],2), round(summary(model14)$varcor$cond$comID[1],2))
+names(randvar.14)<-c("pid", "comID")
+## ----------- ##
+
+list14=list(bc.14, sd.14, pv.14, log.14, nobs.npid.ncomID, randvar.14)
+names(list14)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
+capture.output(list14, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS14.csv")
+######### --------------------------------------------------------------------------------------------------- ######### 
+
+
+######### TABLE S15 #########
+model15<- glmmTMB(Pain.Days ~ z_age + male + Anatomical.location + z_sumdiags + z_YearsSchool + (1|pid) + (1|comID), data=duration, family=genpois, ziformula= ~ 1)
+summary(model15)
+
+## Beta coefficients ##
+bc.15=round(summary(model15)$coefficients$cond[,1],2)
+## ----------- ##
+
+## SD ##
+sd.15=round(summary(model15)$coefficients$cond[,2],2)
+## ----------- ##
+
+## P-values ##
+pv.15=round(summary(model15)$coefficients$cond[,4],2)
+tpvalue=pv.15
+pvalue=pv.15
+for (i in 1:length(tpvalue))
+{
+  if (tpvalue[i]<=0.001)
+  {
+    pvalue[i]<-"p≤0.001"
+  }
+  if (tpvalue[i]<=0.01 & tpvalue[i]>0.001)
+  {
+    pvalue[i]<-"p≤0.01"
+  }
+  if (tpvalue[i]<=0.05 & tpvalue[i]>0.01)
+  {
+    pvalue[i]<-"p≤0.05"
+  }
+  if (tpvalue[i]<=0.1 & tpvalue[i]>0.05)
+  {
+    pvalue[i]<-"p≤0.1"
+  }
+  if (tpvalue[i]>0.1)
+  {
+    pvalue[i]<-round(tpvalue[i], 3)
+  }
+}
+pvalue
+pv.15=pvalue
+## ----------- ##
+
+## Link function ##
+log.15=summary(model15)$family
+## ----------- ##
+
+## Number of person-observations and number of individuals (pid) ##
+nobs.15=summary(model15)$nobs
+nobs.npid.ncomID=c(nobs.15,summary(model15)$ngrps$cond)
+names(nobs.npid.ncomID)<-c("Number of person-observations", "pid", "comID")
+## ----------- ##
+
+## Random effects variables ##
+randvar.15=c(round(summary(model15)$varcor$cond$pid[1],2), round(summary(model15)$varcor$cond$comID[1],2))
+names(randvar.15)<-c("pid", "comID")
+## ----------- ##
+
+list15=list(bc.15, sd.15, pv.15, log.15, nobs.npid.ncomID, randvar.15)
+names(list15)<-c("Beta coefficients", "Standard deviations", "P-values", "Log count", " ", "Variance explained by random effects")
+capture.output(list15, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS15.csv")
+######### --------------------------------------------------------------------------------------------------- ######### 
+
+
+######### TABLE S16 ######### 
+model16 <- glmmTMB(Chronic.Pain90 ~ z_age + male + Anatomical.location + z_sumdiags + z_YearsSchool + (1|pid) + (1|comID), data=data, family=binomial)
+
+## Beta coefficients ##
+bc.16=round(summary(model16)$coefficients$cond[,1],2)
+## ----------- ##
+
+## SD ##
+sd.16=round(summary(model16)$coefficients$cond[,2],2)
+## ----------- ##
+
+## P-values ##
+pv.16=round(summary(model16)$coefficients$cond[,4],2)
+tpvalue=pv.16
+pvalue=pv.16
+for (i in 1:length(tpvalue))
+{
+  if (tpvalue[i]<=0.001)
+  {
+    pvalue[i]<-"p≤0.001"
+  }
+  if (tpvalue[i]<=0.01 & tpvalue[i]>0.001)
+  {
+    pvalue[i]<-"p≤0.01"
+  }
+  if (tpvalue[i]<=0.05 & tpvalue[i]>0.01)
+  {
+    pvalue[i]<-"p≤0.05"
+  }
+  if (tpvalue[i]<=0.1 & tpvalue[i]>0.05)
+  {
+    pvalue[i]<-"p≤0.1"
+  }
+  if (tpvalue[i]>0.1)
+  {
+    pvalue[i]<-round(tpvalue[i], 3)
+  }
+}
+pvalue
+pv.16=pvalue
+## ----------- ##
+
+## Link function ##
+log.16=summary(model16)$family
+## ----------- ##
+
+## Number of person-observations and number of individuals (pid) ##
+nobs.16=summary(model16)$nobs
+nobs.npid.ncomID=c(nobs.16,summary(model16)$ngrps$cond)
+names(nobs.npid.ncomID)<-c("Number of person-observations", "pid", "comID")
+## ----------- ##
+
+## Random effects variances ##
+randvar.16=c(round(summary(model16)$varcor$cond$pid[1],2), round(summary(model16)$varcor$cond$comID[1],2))
+names(randvar.16)<-c("pid", "comID")
+## ----------- ##
+
+
+list16=list(bc.16, sd.16, pv.16, log.16, nobs.npid.ncomID, randvar.16)
+names(list16)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
+capture.output(list16, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS16.csv")
+
+######### --------------------------------------------------------------------------------------------------- ######### 
+
+
+######### TABLE 17 ######### 
+ddata=data
+ddata$Chronic.Pain180<-as.numeric(ddata$Chronic.Pain180)
+
+model17 <- glmmTMB(Chronic.Pain180 ~ z_age + male + Anatomical.location + z_sumdiags + z_YearsSchool + (1|pid) + (1|comID), data=ddata, family=binomial)
+summary(model17)
+
+## Beta coefficients ##
+bc.17=round(summary(model17)$coefficients$cond[,1],2)
+## ----------- ##
+
+## SD ##
+sd.17=round(summary(model17)$coefficients$cond[,2],2)
+## ----------- ##
+
+## P-values ##
+pv.17=round(summary(model17)$coefficients$cond[,4],2)
+tpvalue=pv.17
+pvalue=pv.17
+for (i in 1:length(tpvalue))
+{
+  if (tpvalue[i]<=0.001)
+  {
+    pvalue[i]<-"p≤0.001"
+  }
+  if (tpvalue[i]<=0.01 & tpvalue[i]>0.001)
+  {
+    pvalue[i]<-"p≤0.01"
+  }
+  if (tpvalue[i]<=0.05 & tpvalue[i]>0.01)
+  {
+    pvalue[i]<-"p≤0.05"
+  }
+  if (tpvalue[i]<=0.1 & tpvalue[i]>0.05)
+  {
+    pvalue[i]<-"p≤0.1"
+  }
+  if (tpvalue[i]>0.1)
+  {
+    pvalue[i]<-round(tpvalue[i], 3)
+  }
+}
+pvalue
+pv.17=pvalue
+## ----------- ##
+
+## Link function ##
+log.17=summary(model17)$family
+## ----------- ##
+
+## Number of person-observations and number of individuals (pid) ##
+nobs.17=summary(model17)$nobs
+nobs.npid.ncomID=c(nobs.17,summary(model17)$ngrps$cond)
+names(nobs.npid.ncomID)<-c("Number of person-observations", "pid", "comID")
+## ----------- ##
+
+## Random effects variances ##
+randvar.17=c(round(summary(model17)$varcor$cond$pid[1],2), round(summary(model17)$varcor$cond$comID[1],2))
+names(randvar.17)<-c("pid", "comID")
+## ----------- ##
+
+list17=list(bc.17, sd.17, pv.17, log.17, nobs.npid.ncomID, randvar.17)
+names(list17)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
+capture.output(list17, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS17.csv")
+######### --------------------------------------------------------------------------------------------------- ######### 
+
 
 ######### FIGURE S8 #########
 
