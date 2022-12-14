@@ -104,7 +104,8 @@ min.anypain=round(min(markpain),2)
 
 ### 2) Pain duration ###
 
-datanonapd=data[data$Pain.Days!="NA",] #remove all person.observations with a NA in Pain.Days 
+datanonapd=data[!is.na(data$Pain.Days),] #remove all person.observations with a NA in Pain.Days 
+
 datanonapd$Pain.Days<-as.numeric(datanonapd$Pain.Days) 
 
 #total number of individuals, but some individuals do not have complete pain data on all anatomical locations
@@ -172,10 +173,10 @@ min.painpd=round(min(sumpain),2)
 ### ---------------------------------------------------------------------------------------------------------------------- ###
 
 
-### 3) % with chronic pain (≥90 days)
-
-datanonapain$Chronic.Pain90<-as.numeric(datanonapain$Chronic.Pain90)
-data.90d=datanonapain[!is.na(datanonapain$Chronic.Pain90),]  # remove all person.observations with a NA in Pain.Days 
+### 3) % with chronic pain (≥ 3 months)
+datanonapd$Chronic.Pain90<-as.numeric(datanonapd$Chronic.Pain90)
+tdata.90d=datanonapd[datanonapd$Pain.Days!=0,] # Sample size is reduced due to missing pain duration data at certain anatomical locations.
+data.90d=tdata.90d[!is.na(tdata.90d$Chronic.Pain90),]  # remove all person.observations with a NA in Chronic Pain >= 3 months
 
 ## N individuals ##
 n.pain90d=length(unique(data.90d$pid))
@@ -218,17 +219,18 @@ min.pain90d=0
 ### ---------------------------------------------------------------------------------------------------------------------- ###
 
 
-### 4) % with chronic pain (≥180 days) ###
-
-datanonapain$Chronic.Pain180<-as.numeric(datanonapain$Chronic.Pain180)
-data.180d=datanonapain[!is.na(datanonapain$Chronic.Pain180),]
+### 4) % with chronic pain (≥ 6 months) ###
+#Sample size is reduced due to missing pain duration data at certain anatomical locations.
+datanonapd$Chronic.Pain180<-as.numeric(datanonapd$Chronic.Pain180)
+tdata.180d=datanonapd[datanonapd$Pain.Days!=0,] # Sample size is reduced due to missing pain duration data at certain anatomical locations.
+data.180d=tdata.180d[!is.na(tdata.180d$Chronic.Pain180),]
 
 ## N individuals ##
 n.pain180d=length(unique(data.180d$pid))
 ## --------------------- ##
 
 #loop
-markpain=NULL #to store individuals that have chronic pain (≥90 days)
+markpain=NULL #to store individuals that have chronic pain (≥ 6 months |180 days)
 for ( i in 1:n.pain180d)
 {
   tindiv=data.180d[data.180d$pid==unique(data.180d$pid)[i],]
@@ -330,16 +332,37 @@ min.male=round(min(datamale$age),2)
 ### ----------------------- ###
 
 
-### Years of schooling
+### 3) Years of schooling ###
+
+datayschool=data[!is.na(data$YearsSchool),]
+
+## N individuals ##
+n.yschool=length(unique(datayschool$pid))
+## --------------------- ##
+
+## Mean or % ##
+mean.yschool=round(mean(datayschool$YearsSchool),2)
+## --------------------- ##
+
+##SD
+sd.yschool=round(sd(datayschool$YearsSchool),2)
+## --------------------- ##
+
+## MAX ##
+max.yschool=round(max(datayschool$YearsSchool),2)
+## --------------------- ##
+
+## MIN ##
+min.yschool=round(min(datayschool$YearsSchool),2)
 ### ----------------------- ###
 
 ### 3)  Socio-demographics table ###
-outcomeorpred.sd=c("Age (years)", "% male")
-N.sd=c(n.age, n.age)
-meanorpc.sd=c(mean.age,pc.male)
-sd.sd=c(sd.age,sd.male)
-min.sd=c(min.age,min.male)
-max.sd=c(max.age,max.male)
+outcomeorpred.sd=c("Age (years)", "% male", "Years of schooling")
+N.sd=c(n.age, n.age, n.yschool)
+meanorpc.sd=c(mean.age,pc.male, mean.yschool)
+sd.sd=c(sd.age,sd.male, sd.yschool)
+min.sd=c(min.age,min.male, min.yschool)
+max.sd=c(max.age,max.male, max.yschool)
 # row combined
 library(tibble)
 sd.outcome=tibble('Outcome or predictor'= outcomeorpred.sd, N = N.sd, 'Mean or percent'=meanorpc.sd, SD=sd.sd, Min=min.sd, Max=max.sd)
@@ -1598,6 +1621,7 @@ dev.print(tiff, "/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/FIGURES/figure
 dev.off()
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
+
 ######### TABLE S2 ######### 
 ## N ##
 ncause.rev=c(dim(ddata[ddata$cause.rev=="Work",])[1], dim(ddata[ddata$cause.rev=="Fall / other accident",])[1], dim(ddata[ddata$cause.rev=="Social",])[1], dim(ddata[ddata$cause.rev=="Weather",])[1], dim(ddata[ddata$cause.rev=="Illness",])[1], dim(ddata[ddata$cause.rev=="Reproduction",])[1],  dim(ddata[ddata$cause.rev=="Old age",])[1] )
@@ -1635,7 +1659,7 @@ write.csv(table.s2, "/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tab
 
 
 ######### FIGURE S3 ######### 
-# changing typo of categories of work related pain
+# changing typo of categories of work-related pain
 data[data$cause.work=="overload",65]<-"Overload"
 data[data$cause.work=="domestic",65]<-"Domestic"
 data[data$cause.work=="fish",65]<-"Fish"
@@ -1703,6 +1727,7 @@ dev.print(tiff, "/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/FIGURES/figure
 dev.off()
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
+
 ######### TABLE S3 ######### 
 ## N ##
 ncause.work=c(dim(dddata[dddata$cause.work=="Horticulture",])[1], dim(dddata[dddata$cause.work=="Overload",])[1], dim(dddata[dddata$cause.work=="Transport",])[1], dim(dddata[dddata$cause.work=="Hunt or forage",])[1], dim(dddata[dddata$cause.work=="Fish",])[1], dim(dddata[dddata$cause.work=="Wood",])[1],  dim(dddata[dddata$cause.work=="Domestic",])[1] )
@@ -1741,12 +1766,11 @@ write.csv(table.s3, "/home/yoann/Bureau//PAIN TSIMANE REVIEWER VERSION/TABLES/ta
 
 
 ######### TABLE S4 ######### 
-
 library(glmmTMB)
 model4 <- glmmTMB(Pain ~ z_age + male + Anatomical.location + (1|pid) + (1|comID), data=data, family=binomial)
 
 ## Beta coefficients ##
-bc.4=round(summary(model4)$coefficients$cond[,1],2))
+bc.4=round(summary(model4)$coefficients$cond[,1],2)
 ## ----------- ##
 
 ## SD ##
@@ -1804,7 +1828,7 @@ names(randvar.4)<-c("pid", "comID")
 list4=list(bc.4, sd.4, pv.4, log.4, nobs.npid.ncomID, randvar.4)
 names(list4)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
 
-capture.output(list4, file="/home/yoann/Bureau//PAIN TSIMANE REVIEWER VERSION/TABLES/tableS4.csv")
+capture.output(list4, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS4.csv")
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 
@@ -1846,6 +1870,7 @@ fig2
 dev.print(tiff, "/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/FIGURES/Figure2.tiff", width=2000, height=1000, units="px")
 dev.off()
 ######### --------------------------------------------------------------------------------------------------- ######### 
+
 
 ######### TABLE S5 ######### 
 duration=data[!is.na(data$Pain.Days),]
@@ -1949,6 +1974,7 @@ dev.print(tiff, "/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/FIGURES/figure
 dev.off()  
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
+
 ######### TABLE S6 ######### 
 ddata=data
 ddata$Chronic.Pain90<-as.numeric(ddata$Chronic.Pain90)
@@ -2010,8 +2036,9 @@ names(randvar.6)<-c("pid", "comID")
 
 list6=list(bc.6, sd.6, pv.6, log.6, nobs.npid.ncomID, randvar.6)
 names(list6)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
-capture.output(list6, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS6.csv")
+capture.output(list6, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS6.csv")
 ######### --------------------------------------------------------------------------------------------------- ######### 
+
 
 ######### TABLE S7 ######### 
 ddata$Chronic.Pain180<-as.numeric(ddata$Chronic.Pain180)
@@ -2073,11 +2100,11 @@ names(randvar.7)<-c("pid", "comID")
 
 list7=list(bc.7, sd.7, pv.7, log.7, nobs.npid.ncomID, randvar.7)
 names(list7)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
-capture.output(list7, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS7.csv")
+capture.output(list7, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS7.csv")
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
-######### FIGURE S5 ######### 
 
+######### FIGURE S5 ######### 
 data$Chronic.Pain90<-as.numeric(data$Chronic.Pain90)
 
 ## 1) generate predicted values for all possible levels and values from model ##
@@ -2115,6 +2142,7 @@ fig.S5
 dev.print(tiff, "/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/FIGURES/figureS5.tiff", width=2000, height=1000, units="px")
 dev.off()
 ######### --------------------------------------------------------------------------------------------------- ######### 
+
 
 ######### TABLE S8 ######### 
 model8 <- glmmTMB(Pain ~ z_age + male + Anatomical.location + z_sumdiags + (1|pid) + (1|comID), data=data, family=binomial)
@@ -2175,8 +2203,9 @@ names(randvar.8)<-c("pid", "comID")
 
 list8=list(bc.8, sd.8, pv.8, log.8, nobs.npid.ncomID, randvar.8)
 names(list8)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
-capture.output(list8, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS8.csv")
+capture.output(list8, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS8.csv")
 ######### --------------------------------------------------------------------------------------------------- ######### 
+
 
 ######### TABLE S9 ######### 
 model9 <- glmmTMB(Pain.Days ~ z_age + male + Anatomical.location + z_sumdiags + (1|pid) + (1|comID), data=duration, family=genpois)
@@ -2237,8 +2266,9 @@ names(randvar.9)<-c("pid", "comID")
 
 list9=list(bc.9, sd.9, pv.9, log.9, nobs.npid.ncomID, randvar.9)
 names(list9)<-c("Beta coefficients", "Standard deviations", "P-values", "Log count", " ", "Variance explained by random effects")
-capture.output(list9, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS9.csv")
+capture.output(list9, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS9.csv")
 ######### --------------------------------------------------------------------------------------------------- ######### 
+
 
 ######### TABLE S10 ######### 
 model10 <- glmmTMB(Chronic.Pain90 ~ z_age + male + Anatomical.location + z_sumdiags + (1|pid) + (1|comID), data=data, family=binomial)
@@ -2299,7 +2329,7 @@ names(randvar.10)<-c("pid", "comID")
 
 list10=list(bc.10, sd.10, pv.10, log.10, nobs.npid.ncomID, randvar.10)
 names(list10)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
-capture.output(list10, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS10.csv")
+capture.output(list10, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS10.csv")
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 
@@ -2364,7 +2394,7 @@ names(randvar.11)<-c("pid", "comID")
 
 list11=list(bc.11, sd.11, pv.11, log.11, nobs.npid.ncomID, randvar.11)
 names(list11)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
-capture.output(list11, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS11.csv")
+capture.output(list11, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS11.csv")
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 
@@ -2881,6 +2911,7 @@ dev.off()
 
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
+
 ######### TABLE S14 ######### 
 model14 <- glmmTMB(Pain ~ z_age + male + Anatomical.location + z_sumdiags + z_YearsSchool + (1|pid) + (1|comID), data=data, family=binomial)
 
@@ -2940,7 +2971,7 @@ names(randvar.14)<-c("pid", "comID")
 
 list14=list(bc.14, sd.14, pv.14, log.14, nobs.npid.ncomID, randvar.14)
 names(list14)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
-capture.output(list14, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS14.csv")
+capture.output(list14, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS14.csv")
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 
@@ -3004,7 +3035,7 @@ names(randvar.15)<-c("pid", "comID")
 
 list15=list(bc.15, sd.15, pv.15, log.15, nobs.npid.ncomID, randvar.15)
 names(list15)<-c("Beta coefficients", "Standard deviations", "P-values", "Log count", " ", "Variance explained by random effects")
-capture.output(list15, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS15.csv")
+capture.output(list15, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS15.csv")
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 
@@ -3068,12 +3099,12 @@ names(randvar.16)<-c("pid", "comID")
 
 list16=list(bc.16, sd.16, pv.16, log.16, nobs.npid.ncomID, randvar.16)
 names(list16)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
-capture.output(list16, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS16.csv")
+capture.output(list16, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS16.csv")
 
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 
-######### TABLE 17 ######### 
+######### TABLE S17 ######### 
 ddata=data
 ddata$Chronic.Pain180<-as.numeric(ddata$Chronic.Pain180)
 
@@ -3136,7 +3167,7 @@ names(randvar.17)<-c("pid", "comID")
 
 list17=list(bc.17, sd.17, pv.17, log.17, nobs.npid.ncomID, randvar.17)
 names(list17)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
-capture.output(list17, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figures/tableS17.csv")
+capture.output(list17, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS17.csv")
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 
@@ -3144,9 +3175,11 @@ capture.output(list17, file="/home/yoann/Bureau/PAIN TSIMANE/FIGURES/Paper figur
 
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
+
 ######### FIGURE S9 ######### 
 
 ######### --------------------------------------------------------------------------------------------------- ######### 
+
 
 ######### FIGURE 3 ######### 
 # import new dataset
@@ -3204,6 +3237,7 @@ ggplot(data,aes(x=factor(URcountry, level=levels.country),y=Pain.cases.per.1.000
 dev.print(tiff, "/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/FIGURES/Figure3.tiff", width=1000, height=559, units="px")
 dev.off()
 ######### --------------------------------------------------------------------------------------------------- ######### 
+
 
 ######### FIGURE 4 ######### 
 rm(list=ls())
@@ -3283,6 +3317,3 @@ ggplot(data, aes(x=factor(PainMonth.URcountry, level=levels.country),y=`Pain cas
 dev.print(tiff, "/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/FIGURES/Figure4.tiff", width=1000, height=559, units="px")
 dev.off()
 ######### --------------------------------------------------------------------------------------------------- ######### 
-
-
-
