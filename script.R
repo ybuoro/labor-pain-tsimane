@@ -2718,6 +2718,196 @@ dev.off()
 
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
+######### TABLE S12 ######### 
+
+## BASELINE ##
+mod=glmmTMB(Pain ~ age + male + Anatomical.location + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic1=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Pain.Days ~ age + male + Anatomical.location + (1 | pid) + (1 | comID), data=duration, family=genpois)
+aic2=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain90 ~ age + male + Anatomical.location + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic3=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain180 ~ age + male + Anatomical.location + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic4=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+row1=c(aic1, aic2, aic3, aic4)
+## ----------- ##
+
+## BASELINE + respiratory ##
+mod=glmmTMB(Pain ~ age + male + Anatomical.location + resp_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic1=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Pain.Days ~ age + male + Anatomical.location + resp_diag + (1 | pid) + (1 | comID), data=duration, family=genpois)
+aic2=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain90 ~ age + male + Anatomical.location + resp_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic3=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain180 ~ age + male + Anatomical.location + resp_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic4=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+row2=c(aic1, aic2, aic3, aic4)
+## ----------- ##
+
+## BASELINE + musculoskeletal ##
+mod=glmmTMB(Pain ~ age + male + Anatomical.location + musc_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic1=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Pain.Days ~ age + male + Anatomical.location + musc_diag + (1 | pid) + (1 | comID), data=duration, family=genpois)
+aic2=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain90 ~ age + male + Anatomical.location + musc_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic3=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain180 ~ age + male + Anatomical.location + musc_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic4=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+row3=c(aic1, aic2, aic3, aic4)
+## ----------- ##
+
+## BASELINE + gastrointestinal ##
+mod=glmmTMB(Pain ~ age + male + Anatomical.location + gi_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic1=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Pain.Days ~ age + male + Anatomical.location + gi_diag + (1 | pid) + (1 | comID), data=duration, family=genpois)
+aic2=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain90 ~ age + male + Anatomical.location + gi_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic3=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain180 ~ age + male + Anatomical.location + gi_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic4=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+row4=c(aic1, aic2, aic3, aic4)
+## ----------- ##
+
+## BASELINE + genitourinary ##
+mod=glmmTMB(Pain ~ age + male + Anatomical.location + genito_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic1=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Pain.Days ~ age + male + Anatomical.location + genito_diag + (1 | pid) + (1 | comID), data=duration, family=genpois)
+aic2=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain90 ~ age + male + Anatomical.location + genito_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic3=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain180 ~ age + male + Anatomical.location + genito_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic4=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+row5=c(aic1, aic2, aic3, aic4)
+## ----------- ##
+
+## BASELINE + other infection ##
+mod=glmmTMB(Pain ~ age + male + Anatomical.location + infection_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic1=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Pain.Days ~ age + male + Anatomical.location + infection_diag + (1 | pid) + (1 | comID), data=duration, family=genpois)
+aic2=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain90 ~ age + male + Anatomical.location + infection_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic3=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain180 ~ age + male + Anatomical.location + infection_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic4=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+row6=c(aic1, aic2, aic3, aic4)
+## ----------- ##
+
+## BASELINE + circulatory ##
+mod=glmmTMB(Pain ~ age + male + Anatomical.location + circulatory_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic1=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Pain.Days ~ age + male + Anatomical.location + circulatory_diag + (1 | pid) + (1 | comID), data=duration, family=genpois)
+aic2=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain90 ~ age + male + Anatomical.location + circulatory_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic3=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain180 ~ age + male + Anatomical.location + circulatory_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic4=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+row7=c(aic1, aic2, aic3, aic4)
+## ----------- ##
+
+
+## BASELINE + skin/subcutaneous ##
+mod=glmmTMB(Pain ~ age + male + Anatomical.location + skin_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic1=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Pain.Days ~ age + male + Anatomical.location + skin_diag + (1 | pid) + (1 | comID), data=duration, family=genpois)
+aic2=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain90 ~ age + male + Anatomical.location + skin_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic3=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain180 ~ age + male + Anatomical.location + skin_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic4=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+row8=c(aic1, aic2, aic3, aic4)
+## ----------- ##
+
+## BASELINE + summed diagnoses ##
+mod=glmmTMB(Pain ~ age + male + Anatomical.location + sumdiags + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic1=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Pain.Days ~ age + male + Anatomical.location + sumdiags + (1 | pid) + (1 | comID), data=duration, family=genpois)
+aic2=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain90 ~ age + male + Anatomical.location + sumdiags + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic3=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain180 ~ age + male + Anatomical.location + sumdiags + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic4=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+row9=c(aic1, aic2, aic3, aic4)
+## ----------- ##
+
+
+## BASELINE + summed diagnoses + musculoskeletal + circulatory ##
+mod=glmmTMB(Pain ~ age + male + Anatomical.location + sumdiags +musc_diag +circulatory_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic1=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Pain.Days ~ age + male + Anatomical.location + sumdiags +musc_diag +circulatory_diag + (1 | pid) + (1 | comID), data=duration, family=genpois)
+aic2=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain90 ~ age + male + Anatomical.location + sumdiags +musc_diag +circulatory_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic3=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain180 ~ age + male + Anatomical.location + sumdiags +musc_diag +circulatory_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic4=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+row10=c(aic1, aic2, aic3, aic4)
+## ----------- ##
+
+## BASELINE + + summed diagnoses + gastrointestinal + genitourinary ##
+mod=glmmTMB(Pain ~ age + male + Anatomical.location + sumdiags +gi_diag + genito_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic1=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Pain.Days ~ age + male + Anatomical.location + sumdiags +gi_diag + genito_diag + (1 | pid) + (1 | comID), data=duration, family=genpois)
+aic2=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain90 ~ age + male + Anatomical.location + sumdiags +gi_diag + genito_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic3=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod=glmmTMB(Chronic.Pain180 ~ age + male + Anatomical.location + sumdiags +gi_diag + genito_diag + (1 | pid) + (1 | comID), data=data, family=binomial)
+aic4=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+row11=c(aic1, aic2, aic3, aic4)
+## ----------- ##
+
+library(tibble)
+temptable=rbind(row1, row2, row3, row4, row5, row6, row7, row8, row9, row10, row11)
+
+list12=list(temptable)
+colnames(list12[[1]])<-c("1—Current pain", "2--Pain duration", "3a) Chronic Pain ≥3 months", "3b) Chronic Pain ≥6 months")
+rownames(list12[[1]])<-c("Baseline: Pain outcome ~ age + male + anatomical location + (1 | pid) + (1 | comID)", "Baseline + respiratory", "Baseline + musculoskeletal", "Baseline + gastrointestinal
+", "Baseline + genitourinary", "Baseline + other infection", "Baseline + circulatory", "Baseline + skin/subcutaneous", "Baseline + summed diagnoses", "Baseline + summed diagnoses + musculoskeletal + circulatory", "Baseline + summed diagnoses + gastrointestinal + genitourinary")
+
+capture.output(list12, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS12.csv")
+######### --------------------------------------------------------------------------------------------------- ######### 
 
 ######### FIGURE S7 ######### 
 #selecting females
@@ -2908,6 +3098,11 @@ fig.S7
 
 dev.print(tiff, "/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/FIGURES/figureS7.tiff", width=2000, height=900, units="px")
 dev.off()
+
+######### --------------------------------------------------------------------------------------------------- ######### 
+
+
+######### TABLE S13 ######### 
 
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
