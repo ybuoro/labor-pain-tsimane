@@ -2898,7 +2898,6 @@ aic4=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(
 row11=c(aic1, aic2, aic3, aic4)
 ## ----------- ##
 
-library(tibble)
 temptable=rbind(row1, row2, row3, row4, row5, row6, row7, row8, row9, row10, row11)
 
 list12=list(temptable)
@@ -3103,6 +3102,89 @@ dev.off()
 
 
 ######### TABLE S13 ######### 
+
+## BASELINE: Pain outcome ~ age + anatomical location + sum of illness categories + (1 | pid) + (1 | comID) ##
+mod <- glmmTMB(Pain ~ z_age    + Anatomical.location +z_sumdiags + (1|pid) + (1|comID), data = dataf, family=binomial)
+aic1=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod <- glmmTMB(Pain.Days ~ z_age    + Anatomical.location +z_sumdiags + (1|pid) + (1|comID), data = dataf, family=genpois)
+aic2=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod<- glmmTMB(Chronic.Pain90 ~ z_age    + Anatomical.location +z_sumdiags  + (1|pid) + (1|comID), data = dataf, family=binomial)
+aic3=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod<- glmmTMB(Chronic.Pain180 ~ z_age    + Anatomical.location +z_sumdiags  + (1|pid) + (1|comID), data = dataf, family=binomial)
+aic4=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+row1=c(aic1, aic2, aic3, aic4)
+## ----------- ##
+
+## BASELINE + age at first birth ##
+mod <- glmmTMB(Pain ~ z_age    + Anatomical.location +z_sumdiags + afb+ (1|pid) + (1|comID), data = dataf, family=binomial)
+aic1=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod <- glmmTMB(Pain.Days ~ z_age    + Anatomical.location +z_sumdiags + afb+ (1|pid) + (1|comID), data = dataf, family=genpois)
+aic2=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod<- glmmTMB(Chronic.Pain90 ~ z_age    + Anatomical.location +z_sumdiags + afb + (1|pid) + (1|comID), data = dataf, family=binomial)
+aic3=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod<- glmmTMB(Chronic.Pain180 ~ z_age    + Anatomical.location +z_sumdiags + afb + (1|pid) + (1|comID), data = dataf, family=binomial)
+aic4=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+row2=c(aic1, aic2, aic3, aic4)
+## ----------- ##
+
+## BASELINE + mean interbirth interval ##
+mod <- glmmTMB(Pain ~ z_age    + Anatomical.location +z_sumdiags + mean_ibi_mos+ (1|pid) + (1|comID), data = dataf, family=binomial)
+aic1=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod <- glmmTMB(Pain.Days ~ z_age    + Anatomical.location +z_sumdiags + mean_ibi_mos+ (1|pid) + (1|comID), data = dataf, family=genpois)
+aic2=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod<- glmmTMB(Chronic.Pain90 ~ z_age    + Anatomical.location +z_sumdiags + mean_ibi_mos + (1|pid) + (1|comID), data = dataf, family=binomial)
+aic3=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod<- glmmTMB(Chronic.Pain180 ~ z_age    + Anatomical.location +z_sumdiags + mean_ibi_mos + (1|pid) + (1|comID), data = dataf, family=binomial)
+aic4=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+row3=c(aic1, aic2, aic3, aic4)
+## ----------- ##
+
+## BASELINE +  number of live births ##
+mod <- glmmTMB(Pain ~ z_age    + Anatomical.location +z_sumdiags + totalkids+ (1|pid) + (1|comID), data = dataf, family=binomial)
+aic1=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod <- glmmTMB(Pain.Days ~ z_age    + Anatomical.location +z_sumdiags + totalkids+ (1|pid) + (1|comID), data = dataf, family=genpois)
+aic2=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod<- glmmTMB(Chronic.Pain90 ~ z_age    + Anatomical.location +z_sumdiags + totalkids + (1|pid) + (1|comID), data = dataf, family=binomial)
+aic3=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod<- glmmTMB(Chronic.Pain180 ~ z_age    + Anatomical.location +z_sumdiags + totalkids + (1|pid) + (1|comID), data = dataf, family=binomial)
+aic4=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+row4=c(aic1, aic2, aic3, aic4)
+## ----------- ##
+
+## BASELINE + gave birth in past year (reference: no) ##
+mod <- glmmTMB(Pain ~ z_age    + Anatomical.location +z_sumdiags + kidunder1+ (1|pid) + (1|comID), data = dataf, family=binomial)
+aic1=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod <- glmmTMB(Pain.Days ~ z_age    + Anatomical.location +z_sumdiags + kidunder1+ (1|pid) + (1|comID), data = dataf, family=genpois)
+aic2=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod<- glmmTMB(Chronic.Pain90 ~ z_age    + Anatomical.location +z_sumdiags + kidunder1 + (1|pid) + (1|comID), data = dataf, family=binomial)
+aic3=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+
+mod<- glmmTMB(Chronic.Pain180 ~ z_age    + Anatomical.location +z_sumdiags + kidunder1 + (1|pid) + (1|comID), data = dataf, family=binomial)
+aic4=paste0(round(as.numeric(summary(mod)$AICtab[1]),1), " (", round(as.numeric(summary(mod)$AICtab[3]),1),")")
+row5=c(aic1, aic2, aic3, aic4)
+## ----------- ##
+
+temptable2=rbind(row1, row2, row3, row4, row5)
+
+list13=list(temptable2)
+colnames(list13[[1]])<-c("1—Current pain", "2--Pain duration", "3a) Chronic Pain ≥3 months", "3b) Chronic Pain ≥6 months")
+rownames(list13[[1]])<-c("Baseline: Pain outcome ~ age + anatomical location + sum of illness categories + (1 | pid) + (1 | comID)", "Baseline + age at first birth", "Baseline + mean interbirth interval", "Baseline + number of live births", "Baseline + gave birth in past year (reference: no)")
+
+capture.output(list13, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS13.csv")
 
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
