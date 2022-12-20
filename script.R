@@ -3456,7 +3456,7 @@ dddata$cause.work<-factor(dddata$cause.work, levels = c("Horticulture", "Overloa
 
 tdlab=dddata[!is.na(dddata$YearsSchool),]
 
-## 1) compute number of person-observations for each age category ##
+## 1) prepare dataset ##
 tdlab$YearsSchool<-as.character(tdlab$YearsSchool)
 
 tdlab[tdlab$YearsSchool=="0.083333333",72]<-"0"
@@ -3466,7 +3466,6 @@ tdlab[tdlab$YearsSchool=="7",72]<-"7+"
 tdlab[tdlab$YearsSchool=="9",72]<-"7+"
 tdlab[tdlab$YearsSchool=="13",72]<-"7+"
 
-unique(dlabdata$YearsSchool)
 # storing the correct order of each age category text in order to display it on the figure 
 vec=c("0", "1", "2", "3", "4", "5", "6", "7+")
 dlabdata=tdlab
@@ -3478,8 +3477,8 @@ dlabdata$YearsSchool<-factor(dlabdata$YearsSchool, levels=vec)
 colfill2 <- c("Overload" = "#3B4992FF",  "Hunt or forage" = "#EE0000FF", "Horticulture" = "#008B45FF", "Transport" = "#631879FF", "Fish" = "lightgoldenrod1", "Domestic" = "chocolate1", "Wood"="#008280FF")
 
 fig.S8 <- ggplot(dlabdata, aes(x = YearsSchool)) +
-  theme_bw()+
-  geom_bar(aes(fill = cause.work), position = "fill",  width=0.6) +
+  theme_classic()+
+  geom_bar(aes(fill = cause.work), position = "fill",  width=0.8) +
   theme(legend.position = "right")+
   labs(fill="Attributions")+
   ylab("Percent of work-related pain attributions") +
@@ -3490,13 +3489,83 @@ fig.S8 <- ggplot(dlabdata, aes(x = YearsSchool)) +
 
 
 fig.S8
-dev.print(tiff, "/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/FIGURES/figureS8.tiff", width=1000, height=1200, units="px")
+dev.print(tiff, "/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/FIGURES/figureS8.tiff", width=1000, height=1150, units="px")
 dev.off()
 
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 
 ######### FIGURE S9 ######### 
+
+dddata=data[!data$cause.fall.omit.nonspecific=="NA",]
+unique(dddata$cause.fall.omit.nonspecific)
+tdlab=dddata[!is.na(dddata$cause.fall.omit.nonspecific),]
+
+## 1) prepare dataset ##
+# Pain attribution relabelling
+tdlab$cause.fall.omit.nonspecific<-as.character(tdlab$cause.fall.omit.nonspecific)
+
+tdlab[tdlab$cause.fall.omit.nonspecific=="bathe",67]<-"Bathe"
+tdlab[tdlab$cause.fall.omit.nonspecific=="carry roofing leaves",67]<-"Carry roofing leaves"
+tdlab[tdlab$cause.fall.omit.nonspecific=="carry water",67]<-"Carry water"
+tdlab[tdlab$cause.fall.omit.nonspecific=="chop wood",67]<-"Chop wood"
+tdlab[tdlab$cause.fall.omit.nonspecific=="climb tree",67]<-"Climb tree"
+tdlab[tdlab$cause.fall.omit.nonspecific=="drunk",67]<-"Drunk"
+tdlab[tdlab$cause.fall.omit.nonspecific=="harvest/carry cultigen",67]<-"Harvest or carry cultigen"
+tdlab[tdlab$cause.fall.omit.nonspecific=="overload",67]<-"Overload"
+tdlab[tdlab$cause.fall.omit.nonspecific=="walk",67]<-"Walk"
+
+# storing the correct order of each age category text in order to display it on the figure 
+vec=c("Bathe", "Carry roofing leaves", "Carry water", "Chop wood", "Climb tree", "Drunk", "Harvest or carry cultigen", "Overload", "Walk")
+
+# Years of schooling - relabelling
+tdlab$YearsSchool<-as.character(tdlab$YearsSchool)
+
+tdlab[tdlab$YearsSchool=="0",72]<-"0-2"
+tdlab[tdlab$YearsSchool=="0.083333333",72]<-"0-2"
+tdlab[tdlab$YearsSchool=="0.333333333",72]<-"0-2"
+tdlab[tdlab$YearsSchool=="0.666666667",72]<-"0-2"
+tdlab[tdlab$YearsSchool=="1",72]<-"0-2"
+tdlab[tdlab$YearsSchool=="2",72]<-"0-2"
+
+tdlab[tdlab$YearsSchool=="3",72]<-"3+"
+tdlab[tdlab$YearsSchool=="4",72]<-"3+"
+tdlab[tdlab$YearsSchool=="5",72]<-"3+"
+tdlab[tdlab$YearsSchool=="6",72]<-"3+"
+tdlab[tdlab$YearsSchool=="7",72]<-"3+"
+tdlab[tdlab$YearsSchool=="9",72]<-"3+"
+tdlab[tdlab$YearsSchool=="12",72]<-"3+"
+tdlab[tdlab$YearsSchool=="13",72]<-"3+"
+
+# storing the correct order of each age category text in order to display it on the figure 
+vec2=c("0-2", "3+")
+
+dlabdata=tdlab
+dlabdata$cause.fall.omit.nonspecific<-factor(dlabdata$cause.fall.omit.nonspecific, levels=vec)
+dlabdata$YearsSchool<-factor(dlabdata$YearsSchool, levels=vec2)
+## ----------- ##
+
+## 2) coding of the plot ##
+# specifying colours for each category of work
+vec=c("Bathe", "Carry roofing leaves", "Carry water", "Chop wood", "Climb tree", "Drunk", "Harvest or carry cultigen", "Overload", "Walk")
+
+colfill2 <- c("Bathe" = "cadetblue2",  "Carry roofing leaves" = "dodgerblue3", "Carry water" = "darkolivegreen1", "Chop wood" = "darkolivegreen4", "Climb tree" = "coral", "Drunk" = "red3", "Harvest or carry cultigen"="gold", "Overload"="darkorange2", "Walk"="plum")
+
+fig.S9 <- ggplot(dlabdata, aes(x = YearsSchool)) +
+  theme_classic()+
+  geom_bar(aes(fill = cause.fall.omit.nonspecific), position = "fill",  width=0.8) +
+  theme(legend.position = "right")+
+  labs(fill="Attributions")+
+  ylab("Percent of work-related pain attributions") +
+  xlab("Years of schooling") +
+  theme(text = element_text(size=55),plot.title = element_text(hjust = 0.5), panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+  scale_fill_manual(values = colfill2)+
+  scale_y_continuous(labels = scales::percent)
+
+
+fig.S9
+dev.print(tiff, "/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/FIGURES/figureS9.tiff", width=1000, height=1150, units="px")
+dev.off()
 
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
