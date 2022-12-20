@@ -3547,8 +3547,6 @@ dlabdata$YearsSchool<-factor(dlabdata$YearsSchool, levels=vec2)
 
 ## 2) coding of the plot ##
 # specifying colours for each category of work
-vec=c("Bathe", "Carry roofing leaves", "Carry water", "Chop wood", "Climb tree", "Drunk", "Harvest or carry cultigen", "Overload", "Walk")
-
 colfill2 <- c("Bathe" = "cadetblue2",  "Carry roofing leaves" = "dodgerblue3", "Carry water" = "darkolivegreen1", "Chop wood" = "darkolivegreen4", "Climb tree" = "coral", "Drunk" = "red3", "Harvest or carry cultigen"="gold", "Overload"="darkorange2", "Walk"="plum")
 
 fig.S9 <- ggplot(dlabdata, aes(x = YearsSchool)) +
