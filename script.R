@@ -1767,10 +1767,18 @@ write.csv(table.s3, "/home/yoann/Bureau//PAIN TSIMANE REVIEWER VERSION/TABLES/ta
 
 ######### TABLE S4 ######### 
 library(glmmTMB)
+
+# coding arm as the reference 
+data$Anatomical.location<-factor(data$Anatomical.location, levels=c("arm", "back","foot", "hand", "leg"))
+
 model4 <- glmmTMB(Pain ~ z_age + male + Anatomical.location + (1|pid) + (1|comID), data=data, family=binomial)
 
-## Beta coefficients ##
-bc.4=round(summary(model4)$coefficients$cond[,1],2)
+## Estimate (log odds) ##
+est.4=round(summary(model4)$coefficients$cond[,1],3)
+## ----------- ## 
+
+## Odds ratio ##
+or.4=round(exp(summary(model4)$coefficients$cond[,1]),3)
 ## ----------- ##
 
 ## SD ##
@@ -1825,10 +1833,14 @@ randvar.4=c(round(summary(model4)$varcor$cond$pid[1],2), round(summary(model4)$v
 names(randvar.4)<-c("pid", "comID")
 ## ----------- ##
 
-list4=list(bc.4, sd.4, pv.4, log.4, nobs.npid.ncomID, randvar.4)
-names(list4)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
+list4=list(est.4, or.4, sd.4, pv.4, log.4, nobs.npid.ncomID, randvar.4)
+names(list4)<-c("Estimate (log odds)", "Odds ratio", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
 
 capture.output(list4, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS4.csv")
+
+# back to reference order of anatomical location
+data$Anatomical.location<-factor(data$Anatomical.location, levels=c("back","foot", "hand", "leg", "arm"))
+
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 
@@ -1872,13 +1884,20 @@ dev.off()
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 
-######### TABLE S5 ######### 
+######### TABLE S5 #########
+# coding arm as the reference 
+data$Anatomical.location<-factor(data$Anatomical.location, levels=c("arm", "back","foot", "hand", "leg"))
+
 duration=data[!is.na(data$Pain.Days),]
 
 model5 <- glmmTMB(Pain.Days ~ z_age + male + Anatomical.location + (1|pid) + (1|comID), data=duration, family=genpois)
 
-## Beta coefficients ##
-bc.5=round(exp(summary(model5)$coefficients$cond[,1]),2)
+## Estimate (log odds) ##
+est.5=round(summary(model5)$coefficients$cond[,1],3)
+## ----------- ## 
+
+## Incident rate ratio ##
+or.5=round(exp(summary(model5)$coefficients$cond[,1]),3)
 ## ----------- ##
 
 ## SD ##
@@ -1928,10 +1947,14 @@ randvar.5=c(round(summary(model5)$varcor$cond$pid[1],2), round(summary(model5)$v
 names(randvar.5)<-c("pid", "comID")
 ## ----------- ##
 
-list5=list(bc.5, sd.5, pv.5, log.5, nobs.npid.ncomID, randvar.5)
-names(list5)<-c("Beta coefficients", "Standard deviations", "P-values", "Log count", " ", "Variance explained by random effects")
+list5=list(est.5, or.5, sd.5, pv.5, log.5, nobs.npid.ncomID, randvar.5)
+names(list5)<-c("Estimate (log odds)", "Incident rate ratio", "P-values", "Logit", " ", "Variance explained by random effects")
 
 capture.output(list5, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS5.csv")
+
+# back to reference order of anatomical location
+data$Anatomical.location<-factor(data$Anatomical.location, levels=c("back","foot", "hand", "leg", "arm"))
+
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 
@@ -1975,13 +1998,20 @@ dev.off()
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 
-######### TABLE S6 ######### 
+######### TABLE S6 #########
+# coding arm as the reference 
+data$Anatomical.location<-factor(data$Anatomical.location, levels=c("arm", "back","foot", "hand", "leg"))
+
 ddata=data
 ddata$Chronic.Pain90<-as.numeric(ddata$Chronic.Pain90)
 model6 <- glmmTMB(Chronic.Pain90 ~ z_age + male + Anatomical.location + (1|pid) + (1|comID), data=ddata, family=binomial)
 
-## Beta coefficients ##
-bc.6=round(summary(model6)$coefficients$cond[,1],2)
+## Estimate (log odds) ##
+est.6=round(summary(model6)$coefficients$cond[,1],3)
+## ----------- ## 
+
+## Odds ratio ##
+or.6=round(exp(summary(model6)$coefficients$cond[,1]),3)
 ## ----------- ##
 
 ## SD ##
@@ -2034,9 +2064,10 @@ randvar.6=c(round(summary(model6)$varcor$cond$pid[1],2), round(summary(model6)$v
 names(randvar.6)<-c("pid", "comID")
 ## ----------- ##
 
-list6=list(bc.6, sd.6, pv.6, log.6, nobs.npid.ncomID, randvar.6)
-names(list6)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
+list6=list(est.6, or.6, sd.6, pv.6, log.6, nobs.npid.ncomID, randvar.6)
+names(list6)<-c("Estimate (log odds)", "Odds ratio", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
 capture.output(list6, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS6.csv")
+
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 
@@ -2044,8 +2075,12 @@ capture.output(list6, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TAB
 ddata$Chronic.Pain180<-as.numeric(ddata$Chronic.Pain180)
 model7 <- glmmTMB(Chronic.Pain180 ~ z_age + male + Anatomical.location + (1|pid) + (1|comID), data=ddata, family=binomial)
 
-## Beta coefficients ##
-bc.7=round(summary(model7)$coefficients$cond[,1],2)
+## Estimate (log odds) ##
+est.7=round(summary(model7)$coefficients$cond[,1],3)
+## ----------- ## 
+
+## Odds ratio ##
+or.7=round(exp(summary(model7)$coefficients$cond[,1]),3)
 ## ----------- ##
 
 ## SD ##
@@ -2098,9 +2133,13 @@ randvar.7=c(round(summary(model7)$varcor$cond$pid[1],2), round(summary(model7)$v
 names(randvar.7)<-c("pid", "comID")
 ## ----------- ##
 
-list7=list(bc.7, sd.7, pv.7, log.7, nobs.npid.ncomID, randvar.7)
-names(list7)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
+list7=list(est.7, or.7, sd.7, pv.7, log.7, nobs.npid.ncomID, randvar.7)
+names(list7)<-c("Estimate (log odds)", "Odds ratio", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
 capture.output(list7, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS7.csv")
+
+# back to reference order of anatomical location
+data$Anatomical.location<-factor(data$Anatomical.location, levels=c("back","foot", "hand", "leg", "arm"))
+
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 
@@ -2145,10 +2184,17 @@ dev.off()
 
 
 ######### TABLE S8 ######### 
+# coding arm as the reference 
+data$Anatomical.location<-factor(data$Anatomical.location, levels=c("arm", "back","foot", "hand", "leg"))
+
 model8 <- glmmTMB(Pain ~ z_age + male + Anatomical.location + z_sumdiags + (1|pid) + (1|comID), data=data, family=binomial)
 
-## Beta coefficients ##
-bc.8=round(summary(model8)$coefficients$cond[,1],2)
+## Estimate (log odds) ##
+est.8=round(summary(model8)$coefficients$cond[,1],3)
+## ----------- ## 
+
+## Odds ratio ##
+or.8=round(exp(summary(model8)$coefficients$cond[,1]),3)
 ## ----------- ##
 
 ## SD ##
@@ -2201,17 +2247,23 @@ randvar.8=c(round(summary(model8)$varcor$cond$pid[1],2), round(summary(model8)$v
 names(randvar.8)<-c("pid", "comID")
 ## ----------- ##
 
-list8=list(bc.8, sd.8, pv.8, log.8, nobs.npid.ncomID, randvar.8)
-names(list8)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
+list8=list(est.8, or.8, sd.8, pv.8, log.8, nobs.npid.ncomID, randvar.8)
+names(list8)<-c("Estimate (log odds)", "Odds ratio", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
 capture.output(list8, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS8.csv")
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 
 ######### TABLE S9 ######### 
+duration=data[!is.na(data$Pain.Days),]
+
 model9 <- glmmTMB(Pain.Days ~ z_age + male + Anatomical.location + z_sumdiags + (1|pid) + (1|comID), data=duration, family=genpois)
 
-## Beta coefficients ##
-bc.9=round(summary(model9)$coefficients$cond[,1],2)
+## Estimate (log odds) ##
+est.9=round(summary(model9)$coefficients$cond[,1],3)
+## ----------- ## 
+
+## Odds ratio ##
+or.9=round(exp(summary(model9)$coefficients$cond[,1]),3)
 ## ----------- ##
 
 ## SD ##
@@ -2264,8 +2316,8 @@ randvar.9=c(round(summary(model9)$varcor$cond$pid[1],2), round(summary(model9)$v
 names(randvar.9)<-c("pid", "comID")
 ## ----------- ##
 
-list9=list(bc.9, sd.9, pv.9, log.9, nobs.npid.ncomID, randvar.9)
-names(list9)<-c("Beta coefficients", "Standard deviations", "P-values", "Log count", " ", "Variance explained by random effects")
+list9=list(est.9, or.9, sd.9, pv.9, log.9, nobs.npid.ncomID, randvar.9)
+names(list9)<-c("Estimate (log odds)", "Incident rate ratio", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
 capture.output(list9, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS9.csv")
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
@@ -2273,9 +2325,14 @@ capture.output(list9, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TAB
 ######### TABLE S10 ######### 
 model10 <- glmmTMB(Chronic.Pain90 ~ z_age + male + Anatomical.location + z_sumdiags + (1|pid) + (1|comID), data=data, family=binomial)
 
-## Beta coefficients ##
-bc.10=round(summary(model10)$coefficients$cond[,1],2)
+## Estimate (log odds) ##
+est.10=round(summary(model10)$coefficients$cond[,1],3)
+## ----------- ## 
+
+## Odds ratio ##
+or.10=round(exp(summary(model10)$coefficients$cond[,1]),3)
 ## ----------- ##
+
 
 ## SD ##
 sd.10=round(summary(model10)$coefficients$cond[,2],2)
@@ -2327,8 +2384,8 @@ randvar.10=c(round(summary(model10)$varcor$cond$pid[1],2), round(summary(model10
 names(randvar.10)<-c("pid", "comID")
 ## ----------- ##
 
-list10=list(bc.10, sd.10, pv.10, log.10, nobs.npid.ncomID, randvar.10)
-names(list10)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
+list10=list(est.10, or.10, sd.10, pv.10, log.10, nobs.npid.ncomID, randvar.10)
+names(list10)<-c("Estimate (log odds)", "Odds ratio", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
 capture.output(list10, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS10.csv")
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
@@ -2338,8 +2395,12 @@ ddata=data
 ddata$Chronic.Pain180<-as.numeric(ddata$Chronic.Pain180)
 model11 <- glmmTMB(Chronic.Pain180 ~ z_age + male + Anatomical.location + z_sumdiags + (1|pid) + (1|comID), data=ddata, family=binomial)
 
-## Beta coefficients ##
-bc.11=round(summary(model11)$coefficients$cond[,1],2)
+## Estimate (log odds) ##
+est.11=round(summary(model11)$coefficients$cond[,1],3)
+## ----------- ## 
+
+## Odds ratio ##
+or.11=round(exp(summary(model11)$coefficients$cond[,1]),3)
 ## ----------- ##
 
 ## SD ##
@@ -2392,9 +2453,13 @@ randvar.11=c(round(summary(model11)$varcor$cond$pid[1],2), round(summary(model11
 names(randvar.11)<-c("pid", "comID")
 ## ----------- ##
 
-list11=list(bc.11, sd.11, pv.11, log.11, nobs.npid.ncomID, randvar.11)
-names(list11)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
+list11=list(est.11, or.11, sd.11, pv.11, log.11, nobs.npid.ncomID, randvar.11)
+names(list11)<-c("Estimate (log odds)", "Odds ratio", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
 capture.output(list11, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS11.csv")
+
+# back to reference order of anatomical location
+data$Anatomical.location<-factor(data$Anatomical.location, levels=c("back","foot", "hand", "leg", "arm"))
+
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 
@@ -2906,6 +2971,10 @@ rownames(list12[[1]])<-c("Baseline: Pain outcome ~ age + male + anatomical locat
 ", "Baseline + genitourinary", "Baseline + other infection", "Baseline + circulatory", "Baseline + skin/subcutaneous", "Baseline + summed diagnoses", "Baseline + summed diagnoses + musculoskeletal + circulatory", "Baseline + summed diagnoses + gastrointestinal + genitourinary")
 
 capture.output(list12, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS12.csv")
+
+# back to reference order of anatomical location
+data$Anatomical.location<-factor(data$Anatomical.location, levels=c("back","foot", "hand", "leg", "arm"))
+
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 ######### FIGURE S7 ######### 
@@ -3102,6 +3171,9 @@ dev.off()
 
 
 ######### TABLE S13 ######### 
+# coding arm as the reference 
+data$Anatomical.location<-factor(data$Anatomical.location, levels=c("arm", "back","foot", "hand", "leg"))
+duration=data[!is.na(data$Pain.Days),]
 
 ## BASELINE: Pain outcome ~ age + anatomical location + sum of illness categories + (1 | pid) + (1 | comID) ##
 mod <- glmmTMB(Pain ~ z_age    + Anatomical.location +z_sumdiags + (1|pid) + (1|comID), data = dataf, family=binomial)
@@ -3192,8 +3264,13 @@ capture.output(list13, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TA
 ######### TABLE S14 ######### 
 model14 <- glmmTMB(Pain ~ z_age + male + Anatomical.location + z_sumdiags + z_YearsSchool + (1|pid) + (1|comID), data=data, family=binomial)
 
-## Beta coefficients ##
-bc.14=round(summary(model14)$coefficients$cond[,1],2)
+
+## Estimate (log odds) ##
+est.14=round(summary(model14)$coefficients$cond[,1],3)
+## ----------- ## 
+
+## Odds ratio ##
+or.14=round(exp(summary(model14)$coefficients$cond[,1]),3)
 ## ----------- ##
 
 ## SD ##
@@ -3246,8 +3323,8 @@ randvar.14=c(round(summary(model14)$varcor$cond$pid[1],2), round(summary(model14
 names(randvar.14)<-c("pid", "comID")
 ## ----------- ##
 
-list14=list(bc.14, sd.14, pv.14, log.14, nobs.npid.ncomID, randvar.14)
-names(list14)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
+list14=list(est.14, or.14, sd.14, pv.14, log.14, nobs.npid.ncomID, randvar.14)
+names(list14)<-c("Estimate (log odds)", "Odds ratio", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
 capture.output(list14, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS14.csv")
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
@@ -3256,8 +3333,12 @@ capture.output(list14, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TA
 model15<- glmmTMB(Pain.Days ~ z_age + male + Anatomical.location + z_sumdiags + z_YearsSchool + (1|pid) + (1|comID), data=duration, family=genpois, ziformula= ~ 1)
 summary(model15)
 
-## Beta coefficients ##
-bc.15=round(summary(model15)$coefficients$cond[,1],2)
+## Estimate (log odds) ##
+est.15=round(summary(model15)$coefficients$cond[,1],3)
+## ----------- ## 
+
+## Odds ratio ##
+or.15=round(exp(summary(model15)$coefficients$cond[,1]),3)
 ## ----------- ##
 
 ## SD ##
@@ -3310,8 +3391,8 @@ randvar.15=c(round(summary(model15)$varcor$cond$pid[1],2), round(summary(model15
 names(randvar.15)<-c("pid", "comID")
 ## ----------- ##
 
-list15=list(bc.15, sd.15, pv.15, log.15, nobs.npid.ncomID, randvar.15)
-names(list15)<-c("Beta coefficients", "Standard deviations", "P-values", "Log count", " ", "Variance explained by random effects")
+list15=list(est.15, or.15, sd.15, pv.15, log.15, nobs.npid.ncomID, randvar.15)
+names(list15)<-c("Estimate (log odds)", "Incident rate ratio", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
 capture.output(list15, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS15.csv")
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
@@ -3319,8 +3400,12 @@ capture.output(list15, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TA
 ######### TABLE S16 ######### 
 model16 <- glmmTMB(Chronic.Pain90 ~ z_age + male + Anatomical.location + z_sumdiags + z_YearsSchool + (1|pid) + (1|comID), data=data, family=binomial)
 
-## Beta coefficients ##
-bc.16=round(summary(model16)$coefficients$cond[,1],2)
+## Estimate (log odds) ##
+est.16=round(summary(model16)$coefficients$cond[,1],3)
+## ----------- ## 
+
+## Odds ratio ##
+or.16=round(exp(summary(model16)$coefficients$cond[,1]),3)
 ## ----------- ##
 
 ## SD ##
@@ -3374,8 +3459,8 @@ names(randvar.16)<-c("pid", "comID")
 ## ----------- ##
 
 
-list16=list(bc.16, sd.16, pv.16, log.16, nobs.npid.ncomID, randvar.16)
-names(list16)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
+list16=list(est.16, or.16, sd.16, pv.16, log.16, nobs.npid.ncomID, randvar.16)
+names(list16)<-c("Estimate (log odds)", "Odds ratio", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
 capture.output(list16, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS16.csv")
 
 ######### --------------------------------------------------------------------------------------------------- ######### 
@@ -3388,8 +3473,12 @@ ddata$Chronic.Pain180<-as.numeric(ddata$Chronic.Pain180)
 model17 <- glmmTMB(Chronic.Pain180 ~ z_age + male + Anatomical.location + z_sumdiags + z_YearsSchool + (1|pid) + (1|comID), data=ddata, family=binomial)
 summary(model17)
 
-## Beta coefficients ##
-bc.17=round(summary(model17)$coefficients$cond[,1],2)
+## Estimate (log odds) ##
+est.17=round(summary(model17)$coefficients$cond[,1],3)
+## ----------- ## 
+
+## Odds ratio ##
+or.17=round(exp(summary(model17)$coefficients$cond[,1]),3)
 ## ----------- ##
 
 ## SD ##
@@ -3442,9 +3531,13 @@ randvar.17=c(round(summary(model17)$varcor$cond$pid[1],2), round(summary(model17
 names(randvar.17)<-c("pid", "comID")
 ## ----------- ##
 
-list17=list(bc.17, sd.17, pv.17, log.17, nobs.npid.ncomID, randvar.17)
-names(list17)<-c("Beta coefficients", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
+list17=list(est.17,or.17, sd.17, pv.17, log.17, nobs.npid.ncomID, randvar.17)
+names(list17)<-c("Estimate (log odds)", "Odds ratio", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
 capture.output(list17, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS17.csv")
+
+# back to reference order of anatomical location
+data$Anatomical.location<-factor(data$Anatomical.location, levels=c("back","foot", "hand", "leg", "arm"))
+
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
 
