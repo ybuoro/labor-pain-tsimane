@@ -1629,7 +1629,7 @@ dev.off()
 ncause.rev=c(dim(ddata[ddata$cause.rev=="Work",])[1], dim(ddata[ddata$cause.rev=="Fall / other accident",])[1], dim(ddata[ddata$cause.rev=="Social",])[1], dim(ddata[ddata$cause.rev=="Weather",])[1], dim(ddata[ddata$cause.rev=="Illness",])[1], dim(ddata[ddata$cause.rev=="Reproduction",])[1],  dim(ddata[ddata$cause.rev=="Old age",])[1] )
 ## --------------------- ##
 
-nonaPDdata=ddata[!ddata$Pain.Days=="NA",]
+nonaPDdata=ddata[!is.na(ddata$Pain.Days),]
 
 ## Mean ##
 mean.paindays=c(mean(as.numeric(unlist(nonaPDdata[nonaPDdata$cause.rev=="Work",62]))), mean(as.numeric(unlist(nonaPDdata[nonaPDdata$cause.rev=="Fall / other accident",62]))), mean(as.numeric(unlist(nonaPDdata[nonaPDdata$cause.rev=="Social",62]))), mean(as.numeric(unlist(nonaPDdata[nonaPDdata$cause.rev=="Weather",62]))), mean(as.numeric(unlist(nonaPDdata[nonaPDdata$cause.rev=="Illness",62]))), mean(as.numeric(unlist(nonaPDdata[nonaPDdata$cause.rev=="Reproduction",62]))), mean(as.numeric(unlist(nonaPDdata[nonaPDdata$cause.rev=="Old age",62]))))
