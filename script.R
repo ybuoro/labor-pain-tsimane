@@ -1297,8 +1297,10 @@ dlabdata$agecat<-factor(dlabdata$agecat, levels=c("10-19 \n(N=41)", "20-29 \n(N=
 library(ggplot2)
 library(ggsci)
 
+#find colorblind friendly palette
+palette.colors(palette = "Okabe-Ito")
 # specifying the colours used for each pain category
-colfill <- c("Fall / other accident" = "darkseagreen4",  "Work" = "midnightblue", "Reproduction" = "darkred", "Weather" = "magenta3", "Illness" = "darkgoldenrod2", "Social" = "aquamarine", "Old age"="deepskyblue")
+colfill <- c("Fall / other accident" = "#009E73",  "Work" = "#0072B2", "Reproduction" = "#999999", "Weather" = "#D55E00", "Illness" = "#E69F00", "Social" = "#56B4E9", "Old age"="#000000")
 
 #specifying the text for gender
 gender_names <- c(`0` = "Female",`1` = "Male")
@@ -1593,7 +1595,7 @@ s2.90 <- ggplot(dlabdatap90, aes(x = agecat)) +
 
 ### 3) chronic pain >= 180days ###
 # specifying colours for each category of work
-colfill.180 <- c("Fall / other accident" = "darkseagreen4",  "Work" = "midnightblue", "Reproduction" = "darkred", "Weather" = "magenta3", "Illness" = "darkgoldenrod2", "Social" = "aquamarine", "Old age"="deepskyblue", "DUMMY"="white")
+colfill.180 <- c("Fall / other accident" = "#009E73",  "Work" = "#0072B2", "Reproduction" = "#999999", "Weather" = "#D55E00", "Illness" = "#E69F00", "Social" = "#56B4E9", "Old age"="#000000", "DUMMY"="white")
 
 s2.180 <- ggplot(dlabdatap180, aes(x = agecat)) +
   facet_wrap(~ male, labeller = as_labeller(gender_names), scales = "free_x")+
@@ -1706,8 +1708,10 @@ dlabdata$agecat<-factor(dlabdata$agecat, levels=c(vec.male,vec.female))
 ## ----------- ##
 
 ## 2) coding of the plot ##
+#find colorblind friendly palette
+palette.colors(palette = "Alphabet")
 # specifying colours for each category of work
-colfill2 <- c("Overload" = "#3B4992FF",  "Hunt or forage" = "#EE0000FF", "Horticulture" = "#008B45FF", "Transport" = "#631879FF", "Fish" = "lightgoldenrod1", "Domestic" = "chocolate1", "Wood"="#008280FF")
+colfill2 <- c("Overload" = "#325A9B",  "Hunt or forage" = "#F6222E", "Horticulture" = "#1C8356", "Transport" = "#B00068", "Fish" = "#F7E1A0", "Domestic" = "#FEAF16", "Wood"="#1CBE4F")
 
 fig.S3 <- ggplot(dlabdata, aes(x = agecat)) +
   facet_wrap(~ male, labeller = as_labeller(gender_names), scales = "free_x")+
@@ -1890,7 +1894,7 @@ data$Anatomical.location<-factor(data$Anatomical.location, levels=c("arm", "back
 
 duration=data[!is.na(data$Pain.Days),]
 
-model5 <- glmmTMB(Pain.Days ~ z_age + male + Anatomical.location + (1|pid) + (1|comID), data=duration, family=genpois)
+model5 <- glmmTMB(Pain.Days ~ z_age + male + Anatomical.location + (1|pid) + (1|comID), data=duration, family=genpois, ziformula= ~ 1)
 
 ## Estimate (log odds) ##
 est.5=round(summary(model5)$coefficients$cond[,1],3)
@@ -1947,8 +1951,53 @@ randvar.5=c(round(summary(model5)$varcor$cond$pid[1],2), round(summary(model5)$v
 names(randvar.5)<-c("pid", "comID")
 ## ----------- ##
 
-list5=list(est.5, or.5, sd.5, pv.5, log.5, nobs.npid.ncomID, randvar.5)
-names(list5)<-c("Estimate (log odds)", "Incident rate ratio", "P-values", "Logit", " ", "Variance explained by random effects")
+
+## Zero inflation model ##
+## Estimate (log odds) ##
+est.zim.5=round(summary(model5)$coefficients$zi[,1],3)
+## ----------- ##
+
+## Odds ratio ##
+or.zim.5=round(exp(summary(model5)$coefficients$zi[,1]),3)          
+## ----------- ##
+
+## SD ##
+sd.zim.5=round(summary(model5)$coefficients$zi[,2],2)
+## ----------- ##
+
+## P-values ##
+pv.zim.5=round(summary(model5)$coefficients$zi[,4],2)
+tpvalue=pv.zim.5
+pvalue=pv.zim.5
+for (i in 1:length(tpvalue))
+{
+  if (tpvalue[i]<=0.001)
+  {
+    pvalue[i]<-"p≤0.001"
+  }
+  if (tpvalue[i]<=0.01 & tpvalue[i]>0.001)
+  {
+    pvalue[i]<-"p≤0.01"
+  }
+  if (tpvalue[i]<=0.05 & tpvalue[i]>0.01)
+  {
+    pvalue[i]<-"p≤0.05"
+  }
+  if (tpvalue[i]<=0.1 & tpvalue[i]>0.05)
+  {
+    pvalue[i]<-"p≤0.1"
+  }
+  if (tpvalue[i]>0.1)
+  {
+    pvalue[i]<-round(tpvalue[i], 3)
+  }
+}
+pvalue
+pv.zim.5=pvalue
+## ----------- ##
+
+list15=list(est.5, or.5, sd.5, pv.5, log.5, nobs.npid.ncomID, randvar.5, est.zim.5, or.zim.5, sd.zim.5, pv.zim.5)
+names(list15)<-c("Estimate (log odds)", "Incident rate ratio", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects", "Estimate (log odds)", "Incident rate ratio", "Standard deviations", "P-values")
 
 capture.output(list5, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS5.csv")
 
@@ -3391,8 +3440,52 @@ randvar.15=c(round(summary(model15)$varcor$cond$pid[1],2), round(summary(model15
 names(randvar.15)<-c("pid", "comID")
 ## ----------- ##
 
-list15=list(est.15, or.15, sd.15, pv.15, log.15, nobs.npid.ncomID, randvar.15)
-names(list15)<-c("Estimate (log odds)", "Incident rate ratio", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects")
+## Zero inflation model ##
+## Estimate (log odds) ##
+est.zim.15=round(summary(model15)$coefficients$zi[,1],3)
+## ----------- ##
+
+## Odds ratio ##
+or.zim.15=round(exp(summary(model15)$coefficients$zi[,1]),3)          
+## ----------- ##
+
+## SD ##
+sd.zim.15=round(summary(model15)$coefficients$zi[,2],2)
+## ----------- ##
+
+## P-values ##
+pv.zim.15=round(summary(model15)$coefficients$zi[,4],2)
+tpvalue=pv.zim.15
+pvalue=pv.zim.15
+for (i in 1:length(tpvalue))
+{
+  if (tpvalue[i]<=0.001)
+  {
+    pvalue[i]<-"p≤0.001"
+  }
+  if (tpvalue[i]<=0.01 & tpvalue[i]>0.001)
+  {
+    pvalue[i]<-"p≤0.01"
+  }
+  if (tpvalue[i]<=0.05 & tpvalue[i]>0.01)
+  {
+    pvalue[i]<-"p≤0.05"
+  }
+  if (tpvalue[i]<=0.1 & tpvalue[i]>0.05)
+  {
+    pvalue[i]<-"p≤0.1"
+  }
+  if (tpvalue[i]>0.1)
+  {
+    pvalue[i]<-round(tpvalue[i], 3)
+  }
+}
+pvalue
+pv.zim.15=pvalue
+## ----------- ##
+
+list15=list(est.15, or.15, sd.15, pv.15, log.15, nobs.npid.ncomID, randvar.15, est.zim.15, or.zim.15, sd.zim.15, pv.zim.15)
+names(list15)<-c("Estimate (log odds)", "Incident rate ratio", "Standard deviations", "P-values", "Logit", " ", "Variance explained by random effects", "Estimate (log odds)", "Incident rate ratio", "Standard deviations", "P-values")
 capture.output(list15, file="/home/yoann/Bureau/PAIN TSIMANE REVIEWER VERSION/TABLES/tableS15.csv")
 ######### --------------------------------------------------------------------------------------------------- ######### 
 
@@ -3566,8 +3659,10 @@ dlabdata$YearsSchool<-factor(dlabdata$YearsSchool, levels=vec)
 ## ----------- ##
 
 ## 2) coding of the plot ##
+#find colorblind friendly palette
+palette.colors(palette = "Alphabet")
 # specifying colours for each category of work
-colfill2 <- c("Overload" = "#3B4992FF",  "Hunt or forage" = "#EE0000FF", "Horticulture" = "#008B45FF", "Transport" = "#631879FF", "Fish" = "lightgoldenrod1", "Domestic" = "chocolate1", "Wood"="#008280FF")
+colfill2 <- c("Overload" = "#325A9B",  "Hunt or forage" = "#F6222E", "Horticulture" = "#1C8356", "Transport" = "#B00068", "Fish" = "#F7E1A0", "Domestic" = "#FEAF16", "Wood"="#1CBE4F")
 
 fig.S8 <- ggplot(dlabdata, aes(x = YearsSchool)) +
   theme_classic()+
