@@ -3734,8 +3734,10 @@ dlabdata$YearsSchool<-factor(dlabdata$YearsSchool, levels=vec2)
 ## ----------- ##
 
 ## 2) coding of the plot ##
-# specifying colours for each category of work
-colfill2 <- c("Bathe" = "cadetblue2",  "Carry roofing leaves" = "dodgerblue3", "Carry water" = "darkolivegreen1", "Chop wood" = "darkolivegreen4", "Climb tree" = "coral", "Drunk" = "red3", "Harvest or carry cultigen"="gold", "Overload"="darkorange2", "Walk"="plum")
+#find colorblind friendly palette
+palette.colors(palette = "Tableau 10")
+# specifying the colours used for each pain category
+colfill2 <- c("Bathe" = "#76B7B2",  "Carry roofing leaves" = "#F28E2B", "Carry water" = "#4E79A7", "Chop wood" = "#9C755F", "Climb tree" = "#59A14F" , "Drunk" = "#B07AA1", "Harvest or carry cultigen"="#EDC948", "Overload"="#E15759", "Walk"="#FF9DA7")
 
 fig.S9 <- ggplot(dlabdata, aes(x = YearsSchool)) +
   theme_classic()+
